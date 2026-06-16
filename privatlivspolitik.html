@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privatlivspolitik – Mindre på Spil</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #1a2744; --blue: #4a7cc9; --light-blue: #dce6f5;
+  --gray: #5a6378; --light-gray: #f4f6fa; --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body { font-family: Georgia, serif; color: var(--navy); background: var(--white); overflow-x: hidden; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(26,39,68,0.08);
+  padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px;
+}
+.nav-logo img { height: 100px; width: auto; display: block; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 14px; color: var(--gray); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--navy); }
+.nav-cta {
+  background: var(--navy); color: var(--white); border: none; border-radius: 30px;
+  padding: 10px 22px; font-family: Georgia, serif; font-size: 14px;
+  cursor: pointer; text-decoration: none; transition: background .2s;
+}
+.nav-cta:hover { background: var(--blue); }
+
+.policy-page {
+  max-width: 760px; margin: 0 auto; padding: 120px 40px 80px;
+}
+.policy-tag { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+.policy-page h1 { font-size: clamp(28px, 3vw, 42px); line-height: 1.2; margin-bottom: 8px; }
+.policy-page .updated { font-size: 14px; color: var(--gray); margin-bottom: 40px; }
+.policy-page h2 { font-size: 20px; margin: 40px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--light-blue); }
+.policy-page p { font-size: 15px; color: var(--gray); line-height: 1.75; margin-bottom: 14px; }
+.policy-page ul { margin: 0 0 14px 20px; }
+.policy-page li { font-size: 15px; color: var(--gray); line-height: 1.75; margin-bottom: 6px; }
+.policy-page a { color: var(--blue); }
+.policy-page a:hover { text-decoration: underline; }
+
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--gray); text-decoration: none;
+  margin-bottom: 32px; transition: color .2s;
+}
+.back-link:hover { color: var(--navy); }
+
+footer {
+  background: var(--navy); color: rgba(255,255,255,0.5); padding: 28px 40px;
+  display: flex; align-items: center; justify-content: space-between; font-size: 13px;
+}
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+footer a:hover { color: var(--white); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .policy-page { padding: 100px 20px 60px; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="MindrePa_Spil_logo_transparent.png" alt="Mindre på Spil"></a>
+  <ul class="nav-links">
+    <li><a href="index.html#om-appen">Om appen</a></li>
+    <li><a href="index.html#om-os">Om os</a></li>
+    <li><a href="index.html#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="index.html#kontakt" class="nav-cta">Kontakt os</a>
+</nav>
+
+<div class="policy-page">
+  <a href="index.html" class="back-link">← Tilbage til forsiden</a>
+  <div class="policy-tag">Juridisk</div>
+  <h1>Privatlivspolitik</h1>
+  <p class="updated">Sidst opdateret: maj 2026</p>
+
+  <h2>1. Dataansvarlig</h2>
+  <p>Den dataansvarlige for behandlingen af dine personoplysninger er:</p>
+  <p>
+    Mindre på Spil<br>
+    CVR: 44814942<br>
+    Danmark<br>
+    E-mail: <a href="mailto:Andreas.Gye@gmail.com">Andreas.Gye@gmail.com</a>
+  </p>
+
+  <h2>2. Hvilke oplysninger indsamler vi</h2>
+  <p>Vi indsamler kun personoplysninger som du selv giver os, primært når du kontakter os via e-mail. Det kan inkludere:</p>
+  <ul>
+    <li>Navn</li>
+    <li>E-mailadresse</li>
+    <li>Eventuelle øvrige oplysninger du selv inkluderer i din henvendelse</li>
+  </ul>
+  <p>Vi indsamler ikke oplysninger automatisk via hjemmesiden, og vi benytter ikke analyse- eller sporingsværktøjer som Google Analytics.</p>
+
+  <h2>3. Formål med behandlingen</h2>
+  <p>Dine oplysninger bruges udelukkende til at besvare din henvendelse og eventuelt indgå i et samarbejde eller dialog med dig. Vi videregiver ikke dine oplysninger til tredjeparter.</p>
+
+  <h2>4. Retsgrundlag</h2>
+  <p>Behandlingen af dine personoplysninger sker på grundlag af artikel 6, stk. 1, litra f i GDPR (legitim interesse), idet vi har en berettiget interesse i at besvare henvendelser rettet til os.</p>
+
+  <h2>5. Opbevaring</h2>
+  <p>Vi opbevarer dine oplysninger så længe det er nødvendigt for at opfylde det formål, de er indsamlet til. Korrespondance via e-mail slettes typisk når dialogen er afsluttet og der ikke er et løbende samarbejde.</p>
+
+  <h2>6. Cookies</h2>
+  <p>Hjemmesiden anvender ikke markedsførings-, sporings- eller analytiske cookies. Vi indsamler ikke data om besøgendes adfærd på siden.</p>
+  <p>Cloudflare, som leverer hjemmesidens tekniske infrastruktur, placerer teknisk nødvendige sikkerhedscookies på besøgendes enheder. Den primære cookie er <code>__cf_bm</code>, som anvendes til bot-beskyttelse og sikker trafikfiltrering. Denne cookie:</p>
+  <ul>
+    <li>Indsamler ikke persondata og bruges ikke til sporing eller profilering</li>
+    <li>Genereres uafhængigt for hvert besøg og kan ikke bruges til at følge brugere på tværs af sider</li>
+    <li>Udløber efter 30 minutters inaktivitet</li>
+    <li>Er klassificeret som strengt nødvendig og kræver ikke samtykke efter Cookiebekendtgørelsen</li>
+  </ul>
+  <p>Du kan læse mere om Cloudflares cookies på <a href="https://www.cloudflare.com/cookie-policy/" target="_blank">cloudflare.com/cookie-policy</a>.</p>
+
+  <h2>7. Dine rettigheder</h2>
+  <p>Du har efter GDPR følgende rettigheder i relation til dine personoplysninger:</p>
+  <ul>
+    <li><strong>Indsigt</strong> – du har ret til at se hvilke oplysninger vi har om dig</li>
+    <li><strong>Berigtigelse</strong> – du kan anmode om at få forkerte oplysninger rettet</li>
+    <li><strong>Sletning</strong> – du kan anmode om at få dine oplysninger slettet</li>
+    <li><strong>Begrænsning</strong> – du kan anmode om at behandlingen begrænses</li>
+    <li><strong>Indsigelse</strong> – du kan gøre indsigelse mod behandlingen</li>
+    <li><strong>Dataportabilitet</strong> – du kan modtage dine oplysninger i et struktureret format</li>
+  </ul>
+  <p>Du kan udøve dine rettigheder ved at kontakte os på <a href="mailto:Andreas.Gye@gmail.com">Andreas.Gye@gmail.com</a>.</p>
+
+  <h2>8. Klage til Datatilsynet</h2>
+  <p>Hvis du mener at vores behandling af dine personoplysninger er i strid med GDPR, har du ret til at indgive en klage til Datatilsynet:</p>
+  <p>
+    Datatilsynet<br>
+    Carl Jacobsens Vej 35<br>
+    2500 Valby<br>
+    <a href="https://www.datatilsynet.dk" target="_blank">www.datatilsynet.dk</a>
+  </p>
+
+  <h2>9. Ændringer til denne politik</h2>
+  <p>Vi forbeholder os retten til at opdatere denne privatlivspolitik. Den seneste version vil altid være tilgængelig på denne side med angivelse af opdateringsdato.</p>
+</div>
+
+<footer>
+  <span>© 2026 Mindre på Spil. Alle rettigheder forbeholdes.</span>
+  <span style="opacity:0.5">Privatlivspolitik</span>
+</footer>
+
+</body>
+</html>

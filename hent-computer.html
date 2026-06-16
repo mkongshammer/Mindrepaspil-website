@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hent til computer – Mindre på Spil</title>
+<meta name="description" content="Hent Mindre på Spil computerprogrammet til Mac og Windows. Bloker gambling på din computer og få den samme beskyttelse som på telefonen.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mindrepaaspil.dk/hent-computer.html">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #1a2744; --blue: #4a7cc9; --light-blue: #dce6f5;
+  --gray: #5a6378; --light-gray: #f4f6fa; --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body { font-family: Georgia, serif; color: var(--navy); background: var(--white); overflow-x: hidden; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(26,39,68,0.08);
+  padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px;
+}
+.nav-logo img { height: 100px; width: auto; display: block; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 14px; color: var(--gray); text-decoration: none; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--navy); }
+.nav-cta {
+  background: var(--navy); color: var(--white); border: none; border-radius: 30px;
+  padding: 10px 22px; font-family: Georgia, serif; font-size: 14px;
+  cursor: pointer; text-decoration: none; transition: background .2s;
+}
+.nav-cta:hover { background: var(--blue); }
+
+/* HERO */
+.download-hero {
+  min-height: 52vh;
+  background: linear-gradient(160deg, #dce6f5 0%, #eef2f8 50%, #d8e8f0 100%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 120px 40px 80px; position: relative; overflow: hidden; text-align: center;
+}
+.hero-bg { position: absolute; border-radius: 50%; background: rgba(74,124,201,0.07); pointer-events: none; }
+.hero-bg.c1 { width: 500px; height: 500px; top: -200px; right: -100px; }
+.hero-bg.c2 { width: 350px; height: 350px; bottom: -100px; left: -80px; }
+.download-hero-inner { max-width: 700px; width: 100%; }
+.section-tag { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+.download-hero h1 { font-size: clamp(28px, 3.5vw, 48px); line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
+.download-hero h1 em { font-style: normal; color: var(--blue); }
+.download-hero p { font-size: 17px; color: var(--gray); line-height: 1.7; max-width: 520px; margin: 0 auto; }
+
+/* DOWNLOAD CARDS */
+.download-section {
+  padding: 80px 40px;
+  background: var(--white);
+}
+.download-inner { max-width: 960px; margin: 0 auto; }
+.os-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.os-card {
+  background: var(--light-gray);
+  border-radius: 20px;
+  padding: 36px 28px;
+  text-align: center;
+  transition: transform .2s, box-shadow .2s;
+  display: flex; flex-direction: column; align-items: center;
+}
+.os-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,39,68,0.1); }
+.os-icon {
+  width: 64px; height: 64px;
+  background: var(--navy);
+  border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 30px;
+}
+.os-card h3 { font-size: 19px; margin-bottom: 6px; }
+.os-card .os-sub { font-size: 13px; color: var(--gray); margin-bottom: 24px; line-height: 1.5; flex: 1; }
+.btn-download {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--navy); color: var(--white);
+  padding: 13px 24px; border-radius: 30px;
+  font-family: Georgia, serif; font-size: 14px;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all .2s; width: 100%; justify-content: center;
+}
+.btn-download:hover { background: var(--blue); transform: translateY(-1px); }
+.btn-download svg { flex-shrink: 0; }
+.btn-download-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--navy);
+  padding: 12px 24px; border-radius: 30px;
+  font-family: Georgia, serif; font-size: 14px;
+  text-decoration: none; border: 2px solid var(--navy); cursor: pointer;
+  transition: all .2s; width: 100%; justify-content: center; margin-top: 10px;
+}
+.btn-download-outline:hover { background: var(--navy); color: var(--white); }
+.file-size { font-size: 12px; color: var(--gray); margin-top: 8px; }
+
+/* GUIDE */
+.guide-section {
+  padding: 80px 40px;
+  background: var(--light-gray);
+}
+.guide-inner { max-width: 760px; margin: 0 auto; }
+.guide-section h2 { font-size: clamp(22px, 2.5vw, 34px); line-height: 1.2; margin-bottom: 12px; letter-spacing: -0.3px; }
+.guide-section .section-sub { font-size: 16px; color: var(--gray); line-height: 1.7; margin-bottom: 48px; }
+
+.os-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+.os-tab {
+  padding: 8px 20px; border-radius: 30px; border: 2px solid rgba(26,39,68,0.15);
+  background: transparent; font-family: Georgia, serif; font-size: 14px;
+  color: var(--gray); cursor: pointer; transition: all .2s;
+}
+.os-tab:hover { border-color: var(--navy); color: var(--navy); }
+.os-tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+.guide-steps { display: none; }
+.guide-steps.active { display: block; }
+
+.guide-step {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(26,39,68,0.08);
+}
+.guide-step:last-child { border-bottom: none; }
+.step-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--navy); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 700; flex-shrink: 0;
+}
+.guide-step p { font-size: 15px; color: var(--gray); line-height: 1.65; padding-top: 6px; }
+.guide-step strong { color: var(--navy); }
+
+/* NOTE BOX */
+.note-box {
+  background: var(--light-blue);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-top: 40px;
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.65;
+}
+.note-box strong { color: var(--navy); }
+
+/* FOOTER */
+footer {
+  background: var(--navy); color: rgba(255,255,255,0.5); padding: 28px 40px;
+  display: flex; align-items: center; justify-content: space-between; font-size: 13px;
+}
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+footer a:hover { color: var(--white); }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .download-hero { padding: 100px 20px 60px; }
+  .download-section, .guide-section { padding: 60px 20px; }
+  .os-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+  .os-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="MindrePa_Spil_logo_transparent.png" alt="Mindre på Spil"></a>
+  <ul class="nav-links">
+    <li><a href="index.html#om-appen">Om appen</a></li>
+    <li><a href="index.html#tidslinje">Sådan virker det</a></li>
+    <li><a href="index.html#om-os">Om os</a></li>
+    <li><a href="index.html#kontakt">Kontakt</a></li>
+    <li><a href="hent-computer.html" class="active">Hent til computer</a></li>
+  </ul>
+  <a href="index.html#kontakt" class="nav-cta">Kontakt os</a>
+</nav>
+
+<!-- HERO -->
+<section class="download-hero">
+  <div class="hero-bg c1"></div>
+  <div class="hero-bg c2"></div>
+  <div class="download-hero-inner">
+    <div class="section-tag">Computerprogram</div>
+    <h1>Hent Mindre på Spil<br>til din <em>computer</em></h1>
+    <p>Bloker gambling-hjemmesider direkte på din Mac eller Windows-computer. Samme stærke beskyttelse som på telefonen.</p>
+  </div>
+</section>
+
+<!-- DOWNLOAD CARDS -->
+<section class="download-section">
+  <div class="download-inner">
+    <div class="section-tag">Hent programmet</div>
+    <h2 style="font-size: clamp(22px, 2.5vw, 34px); line-height: 1.2; margin-bottom: 12px; letter-spacing: -0.3px;">Vælg din platform</h2>
+    <p style="font-size: 16px; color: var(--gray); line-height: 1.7;">Download det program der passer til din computer. Er du i tvivl om hvilken Mac-version du har, kan du tjekke det under  → Om denne Mac.</p>
+
+    <div class="os-grid">
+      <!-- Mac Apple Silicon -->
+      <div class="os-card">
+        <div class="os-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" fill="white"/>
+          </svg>
+        </div>
+        <h3>Mac</h3>
+        <p class="os-sub">Apple Silicon<br>(M1, M2, M3, M4)</p>
+        <a href="https://mindrepaaspil.dk/downloads/MindrePaaSpil-1.0.0-arm64.dmg" class="btn-download">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Hent .dmg
+        </a>
+        <p class="file-size">macOS 12 eller nyere</p>
+      </div>
+
+      <!-- Mac Intel -->
+      <div class="os-card">
+        <div class="os-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" fill="white"/>
+          </svg>
+        </div>
+        <h3>Mac</h3>
+        <p class="os-sub">Intel<br>(ældre Mac-modeller)</p>
+        <a href="https://mindrepaaspil.dk/downloads/MindrePaaSpil-1.0.0-x64.dmg" class="btn-download">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Hent .dmg
+        </a>
+        <p class="file-size">macOS 12 eller nyere</p>
+      </div>
+
+      <!-- Windows -->
+      <div class="os-card">
+        <div class="os-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12V6.75l6-1.32v6.57H3zm17 0V5.25L11 3.75V12h9zm-17 1h6v6.57l-6-1.32V13zm17 0h-9v8.25L20 19.75V13z"/>
+          </svg>
+        </div>
+        <h3>Windows</h3>
+        <p class="os-sub">Windows 10 og 11<br>(64-bit)</p>
+        <a href="https://mindrepaaspil.dk/downloads/MindrePaaSpil-Setup-1.0.0.exe" class="btn-download">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Hent .exe
+        </a>
+        <p class="file-size">Windows 10 eller nyere</p>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>Sikkerhedsadvarsel på Mac?</strong> Første gang du åbner programmet kan macOS vise en advarsel om ukendt udvikler. Gå til <strong>Systemindstillinger → Sikkerhed</strong> og tryk "Åbn alligevel". Programmet er sikkert at installere.
+    </div>
+  </div>
+</section>
+
+<!-- INSTALLATION GUIDE -->
+<section class="guide-section">
+  <div class="guide-inner">
+    <div class="section-tag">Vejledning</div>
+    <h2>Sådan installerer du</h2>
+    <p class="section-sub">Følg trinene herunder for din platform. Det tager under 5 minutter.</p>
+
+    <div class="os-tabs">
+      <button class="os-tab active" onclick="showGuide('mac-arm')">Mac (Apple Silicon)</button>
+      <button class="os-tab" onclick="showGuide('mac-intel')">Mac (Intel)</button>
+      <button class="os-tab" onclick="showGuide('windows')">Windows</button>
+    </div>
+
+    <!-- Mac ARM guide -->
+    <div class="guide-steps active" id="guide-mac-arm">
+      <div class="guide-step">
+        <div class="step-num">1</div>
+        <p>Tryk på <strong>"Hent .dmg"</strong> ovenfor og vent til filen er downloadet.</p>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">2</div>
+        <p>Åbn den downloadede <strong>.dmg</strong>-fil ved at dobbeltklikke på den i din Downloads-mappe.</p>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">3</div>
+        <p>Træk <strong>Mindre på Spil</strong>-ikonet over i <strong>Programmer</strong>-mappen i det vindue der åbner sig.</p>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">4</div>
+        <p>Åbn <strong>Programmer</strong> og dobbeltklik på Mindre på Spil. Hvis macOS viser en advarsel: gå til <strong>Systemindstillinger → Sikkerhed og anonymitet</strong> og tryk <strong>"Åbn alligevel"</strong>.</p>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">5</div>
+        <p>Log ind med det samme telefonnummer du bruger i appen. Blokeringen aktiveres automatisk.</p>
+      </div>
+    </div>
+
+    <!-- Mac Intel guide -->
+    <div class="guide-steps" id="guide-mac-intel">
+      <div class="guide-step">
+        <div class="step-num">1</div>
+        <p>Tryk på <strong>"Hent .dmg"</strong> under Mac Intel ovenfor og vent til filen er downloadet.</p>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">2</div>
+        <p>Åbn den downloadede <strong>.dmg</strong>-fil ved at dobbeltklikke på den i din Downloads-mappe.</p>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">3</div>
+        <p>Træk <strong>Mindre på Spil</strong>-ikonet over i <strong>Programmer</strong>-mappen.</p>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">4</div>
+        <p>Åbn programmet fra Programmer. Ved advarsel: gå til <strong>Systemindstillinger → Sikkerhed og anonymitet → "Åbn alligevel"</strong>.</p>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">5</div>
+        <p>Log ind med det samme telefonnummer du bruger i mobilappen. Blokeringen aktiveres automatisk.</p>
+      </div>
+    </div>
+
+    <!-- Windows guide -->
+    <div class="guide-steps" id="guide-windows">
+      <div class="guide-step">
+        <div class="step-num">1</div>
+        <p>Tryk på <strong>"Hent .exe"</strong> ovenfor og vent til filen er downloadet.</p>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">2</div>
+        <p>Dobbeltklik på den downloadede <strong>.exe</strong>-fil for at starte installationen. Hvis Windows viser <em>"Ukendt udgiver"</em> — tryk <strong>"Kør alligevel"</strong>.</p>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">3</div>
+        <p>Følg installationsguiden og tryk <strong>Installer</strong>. Programmet installeres automatisk og starter op.</p>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">4</div>
+        <p>Log ind med det samme telefonnummer du bruger i mobilappen.</p>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">5</div>
+        <p>Blokeringen aktiveres automatisk. Programmet kører i baggrunden og kan tilgås fra proceslinjen.</p>
+      </div>
+    </div>
+
+    <div class="note-box" style="margin-top: 32px;">
+      <strong>Brug mobilappen til at opsætte blokeringen.</strong> Computerprogrammet logger ind med dit eksisterende Mindre på Spil-nummer og forlænger blokeringen til at dække din computer. Du skal stadig have mobilappen installeret for at administrere din selvudelukkelse.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Mindre på Spil. Alle rettigheder forbeholdes.</span>
+  <a href="privatlivspolitik.html">Privatlivspolitik</a>
+</footer>
+
+<script>
+function showGuide(id) {
+  document.querySelectorAll('.guide-steps').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.os-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('guide-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
