@@ -1,0 +1,68 @@
+appId: dk.mindrepaaspil.desktop
+productName: Mindre På Spil
+copyright: Copyright © 2026 Mindre På Spil
+asar: true
+directories:
+  output: release
+  buildResources: build
+files:
+  - dist/**/*
+  - package.json
+  - "!node_modules/**/*.{md,markdown,d.ts.map}"
+
+# The tray icon must be copied into the app's resources. build/ is
+# electron-builder's buildResources dir and is auto-excluded from the app
+# bundle, so without this the runtime tray icon is missing and falls back to
+# an invisible empty icon — leaving no way to reopen the window after it is
+# closed-to-tray on Windows.
+extraResources:
+  - from: build/tray.png
+    to: tray.png
+
+mac:
+  category: public.app-category.utilities
+  # ASCII, space-free filenames so the download-page links work in a URL.
+  # Produces: MindrePaaSpil-1.0.0-arm64.dmg / MindrePaaSpil-1.0.0-x64.dmg
+  artifactName: MindrePaaSpil-${version}-${arch}.${ext}
+  target:
+    - target: dmg
+      arch:
+        - x64
+        - arm64
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  extendInfo:
+    LSUIElement: false
+    NSAppTransportSecurity:
+      NSAllowsArbitraryLoads: false
+
+win:
+  # Produces: MindrePaaSpil-Setup-1.0.0.exe
+  artifactName: MindrePaaSpil-Setup-${version}.${ext}
+  target:
+    - target: nsis
+      arch:
+        - x64
+  requestedExecutionLevel: requireAdministrator
+
+nsis:
+  # One-click install: no folder picker (which previously defaulted to the
+  # user's Desktop and confused non-technical users into re-running the setup
+  # file), installs straight to Program Files, and auto-launches the app on
+  # finish — mirroring the "open the app and see the gate" macOS DMG flow.
+  oneClick: true
+  perMachine: true
+  allowElevation: true
+  runAfterFinish: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Mindre På Spil
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  # Custom uninstall hook: run the app with --report-uninstall before files are
+  # removed so the backend can alert the accountability partner.
+  include: build/installer.nsh
+
+publish: null

@@ -1,0 +1,35 @@
+{
+  "name": "@workspace/desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mindre På Spil — desktop blocker for macOS and Windows",
+  "main": "dist/main/index.js",
+  "scripts": {
+    "dev": "vite",
+    "dev:electron": "tsc -p tsconfig.main.json && electron .",
+    "build:renderer": "vite build",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build": "pnpm run build:renderer && pnpm run build:main",
+    "dist": "pnpm run build && electron-builder --mac --win",
+    "dist:mac": "pnpm run build && electron-builder --mac",
+    "dist:win": "pnpm run build && electron-builder --win",
+    "typecheck": "tsc --noEmit -p tsconfig.main.json && tsc --noEmit -p tsconfig.renderer.json"
+  },
+  "dependencies": {
+    "dns-packet": "^5.6.1",
+    "sudo-prompt": "^9.2.1"
+  },
+  "devDependencies": {
+    "@types/dns-packet": "^5.6.5",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "electron": "^32.2.5",
+    "electron-builder": "^25.1.8",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "typescript": "~5.9.2",
+    "vite": "catalog:"
+  }
+}
