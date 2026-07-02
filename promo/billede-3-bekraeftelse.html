@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Mindre på Spil – Bekræftelse</title>
+<meta name="viewport" content="width=1290">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary:  #1a2744;
+    --secondary:#4a7cc9;
+    --bgStart:  #dce6f5;
+    --text:     #5a6378;
+    --success:  #1a7a4a;
+    --blueBg:   #EAF2FB;
+    --border:   #c5cad4;
+    --white:    #ffffff;
+    --cardBg:   #F4F6FA;
+  }
+  body {
+    width: 1290px; height: 2796px;
+    background: #fff; overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  /* Top gradient */
+  .top-bg {
+    position: absolute; top: 0; left: 0; right: 0; height: 680px;
+    background: linear-gradient(180deg, #e8f1fb 0%, #ffffff 100%);
+    z-index: 0;
+  }
+
+  /* Subtle decorative circle */
+  .deco-circle {
+    position: absolute; border-radius: 50%; z-index: 0; pointer-events: none;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(26,122,74,0.07) 0%, transparent 65%);
+    top: -200px; right: -200px;
+  }
+
+  /* Headline */
+  .headline {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 90px 80px 0; gap: 26px;
+  }
+
+  .hl-eyebrow {
+    font-size: 26px; font-weight: 700; color: var(--success);
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+
+  .hl-main {
+    font-size: 80px; font-weight: 800; color: var(--primary);
+    text-align: center; line-height: 1.06; letter-spacing: -2px;
+  }
+
+  .hl-sub {
+    font-size: 34px; font-weight: 400; color: var(--text);
+    text-align: center; line-height: 1.45; max-width: 900px;
+  }
+
+  /* Phone – centered 800×1734 */
+  .phone-wrap {
+    position: absolute; top: 480px; left: 245px; z-index: 2;
+  }
+
+  .phone-frame {
+    width: 800px; height: 1734px;
+    background: #1C1C1E; border-radius: 76px;
+    position: relative;
+    box-shadow:
+      0 50px 100px rgba(0,0,0,0.34),
+      0 16px 36px rgba(0,0,0,0.16),
+      inset 0 0 0 2px rgba(255,255,255,0.07),
+      inset 0 0 0 6px #252527;
+  }
+  .phone-frame::before {
+    content: ''; position: absolute;
+    right: -9px; top: 380px; width: 8px; height: 140px;
+    background: #2a2a2c; border-radius: 0 5px 5px 0;
+  }
+  .phone-frame::after {
+    content: ''; position: absolute;
+    left: -9px; top: 300px; width: 8px; height: 90px;
+    background: #2a2a2c; border-radius: 5px 0 0 5px;
+    box-shadow: 0 120px 0 #2a2a2c;
+  }
+  .phone-screen {
+    position: absolute; top: 16px; left: 16px; right: 16px; bottom: 16px;
+    background: #fff; border-radius: 62px; overflow: hidden;
+  }
+  .dyn-island {
+    position: absolute; top: 22px; left: 50%; transform: translateX(-50%);
+    width: 170px; height: 52px; background: #1C1C1E;
+    border-radius: 27px; z-index: 100;
+  }
+
+  /* Screen: 768 × 1702 */
+  .screen-wrap {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 110px 48px 64px;
+    overflow: hidden;
+  }
+
+  /* CheckCircle: 80×80 → 160×160 at 2× */
+  .check-circle {
+    width: 160px; height: 160px; border-radius: 80px;
+    background: var(--success);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-bottom: 48px;
+  }
+  .check-mark { color: #fff; font-size: 72px; line-height: 1; }
+
+  /* regTitle: 26px → 52px, mb 16 → 32 */
+  .s-regtit {
+    font-size: 52px; font-weight: 700; color: var(--primary);
+    margin-bottom: 32px; text-align: center;
+  }
+
+  /* bodyText: 13.5px → 27px */
+  .s-body {
+    font-size: 27px; color: var(--text); line-height: 1.65;
+    text-align: center; margin-bottom: 64px; width: 100%;
+  }
+
+  /* small: 12px → 24px */
+  .s-small { font-size: 24px; color: var(--text); margin-bottom: 16px; }
+
+  /* slutDato: 28px → 56px, fw 900, mb 32 */
+  .s-slut-dato {
+    font-size: 56px; font-weight: 900; color: var(--primary);
+    text-align: center; margin-bottom: 32px;
+  }
+
+  /* InfoKort */
+  .s-ik {
+    width: 100%; background: var(--cardBg); border-radius: 24px;
+    padding: 32px; border: 2px solid var(--border); margin-bottom: 48px;
+  }
+  .s-ik-over { font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+  .s-ik-txt  { font-size: 24px; color: var(--text); line-height: 1.55; }
+
+  /* BtnPrimary */
+  .s-btn-p {
+    width: 100%; height: 104px; background: var(--bgStart);
+    border-radius: 55px; display: flex; align-items: center; justify-content: center;
+    font-size: 32px; font-weight: 700; color: var(--primary);
+  }
+
+  /* Feature pills at bottom */
+  .features {
+    position: absolute; bottom: 110px; left: 0; right: 0; z-index: 2;
+    display: flex; justify-content: center; gap: 24px;
+  }
+  .fpill {
+    background: var(--bgStart); border-radius: 999px; padding: 18px 40px;
+    font-size: 28px; font-weight: 600; color: var(--primary);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .fpill-icon { font-size: 30px; }
+</style>
+</head>
+<body>
+
+<div class="top-bg"></div>
+<div class="deco-circle"></div>
+
+<!-- Headline -->
+<div class="headline">
+  <span class="hl-eyebrow">Aktivering bekræftet</span>
+  <h1 class="hl-main">Selvudelukkelsen<br>er aktiv</h1>
+  <p class="hl-sub">Registreringen er bekræftet. Din blokering starter nu, og din pårørende er underrettet.</p>
+</div>
+
+<!-- Phone -->
+<div class="phone-wrap">
+  <div class="phone-frame">
+    <div class="phone-screen">
+      <div class="dyn-island"></div>
+
+      <div class="screen-wrap">
+
+        <!-- CheckCircle -->
+        <div class="check-circle">
+          <span class="check-mark">✓</span>
+        </div>
+
+        <!-- Title -->
+        <div class="s-regtit">Du er registreret!</div>
+
+        <!-- Body text -->
+        <p class="s-body">
+          Du er nu tilmeldt selvudelukkelse. I den kommende periode vil du ikke kunne tilgå spiludbydere for pengespil.
+        </p>
+
+        <!-- Expiry label -->
+        <p class="s-small">Din selvudelukkelse udløber d.</p>
+
+        <!-- Date -->
+        <div class="s-slut-dato">1. juli 2027</div>
+
+        <!-- InfoKort -->
+        <div class="s-ik">
+          <div class="s-ik-over">Din pårørende holdes opdateret</div>
+          <div class="s-ik-txt">Hvis du sletter appen eller fjerner VPN-/DNS-profilen før din selvudelukkelsesperiode er overstået, bliver din pårørende notificeret med det samme.</div>
+        </div>
+
+        <!-- Button -->
+        <div class="s-btn-p">Gå til Min side</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Feature pills -->
+<div class="features">
+  <div class="fpill"><span class="fpill-icon">✓</span> Registreret</div>
+  <div class="fpill"><span class="fpill-icon">🛡</span> Blokering aktiv</div>
+  <div class="fpill"><span class="fpill-icon">📬</span> Pårørende underrettet</div>
+</div>
+
+</body>
+</html>

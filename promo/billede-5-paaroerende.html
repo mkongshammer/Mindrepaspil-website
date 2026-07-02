@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Mindre på Spil – Pårørende</title>
+<meta name="viewport" content="width=1290">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary:  #1a2744;
+    --secondary:#4a7cc9;
+    --bgStart:  #dce6f5;
+    --text:     #5a6378;
+    --success:  #1a7a4a;
+    --blueBg:   #EAF2FB;
+    --border:   #c5cad4;
+    --white:    #ffffff;
+    --cardBg:   #F4F6FA;
+  }
+  body {
+    width: 1290px; height: 2796px;
+    background: #fff; overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  .top-bg {
+    position: absolute; top: 0; left: 0; right: 0; height: 700px;
+    background: linear-gradient(180deg, #e8f1fb 0%, #ffffff 100%);
+    z-index: 0;
+  }
+
+  /* Headline (left-anchored for this layout) */
+  .headline {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 90px 80px 0; gap: 24px;
+  }
+  .hl-eyebrow { font-size: 26px; font-weight: 700; color: var(--secondary); letter-spacing: 2px; text-transform: uppercase; }
+  .hl-main    { font-size: 76px; font-weight: 800; color: var(--primary); text-align: center; line-height: 1.06; letter-spacing: -2px; }
+  .hl-sub     { font-size: 32px; font-weight: 400; color: var(--text); text-align: center; line-height: 1.45; max-width: 900px; }
+
+  /* Phone – smaller and left-aligned to make room for notification */
+  .phone-wrap { position: absolute; top: 480px; left: 50px; z-index: 2; }
+
+  /* Phone: 660×1428 (same 2.165 ratio as real iPhone) */
+  .phone-frame {
+    width: 660px; height: 1428px;
+    background: #1C1C1E; border-radius: 64px; position: relative;
+    box-shadow:
+      0 50px 100px rgba(0,0,0,0.32), 0 16px 36px rgba(0,0,0,0.14),
+      inset 0 0 0 2px rgba(255,255,255,0.07), inset 0 0 0 5px #252527;
+  }
+  .phone-frame::before {
+    content: ''; position: absolute;
+    right: -8px; top: 310px; width: 7px; height: 116px;
+    background: #2a2a2c; border-radius: 0 4px 4px 0;
+  }
+  .phone-frame::after {
+    content: ''; position: absolute;
+    left: -8px; top: 250px; width: 7px; height: 74px;
+    background: #2a2a2c; border-radius: 4px 0 0 4px;
+    box-shadow: 0 100px 0 #2a2a2c;
+  }
+  .phone-screen {
+    position: absolute; top: 14px; left: 14px; right: 14px; bottom: 14px;
+    background: #fff; border-radius: 52px; overflow: hidden;
+  }
+  .dyn-island {
+    position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+    width: 140px; height: 44px; background: #1C1C1E; border-radius: 23px; z-index: 100;
+  }
+
+  /* Screen: 632×1400 — scale 632/390 ≈ 1.62 */
+  .screen-scroll { position: absolute; inset: 0; overflow: hidden; display: flex; flex-direction: column; }
+
+  /* ScreenHeader (step=2): hdr — scale 1.62 */
+  .s-hdr { padding: 72px 26px 14px 40px; }
+  .s-hdr-row { display: flex; align-items: center; }
+  .s-hdr-logo { height: 48px; width: auto; max-width: 212px; object-fit: contain; object-position: left; }
+
+  /* Dots */
+  .pdots { display: flex; justify-content: center; gap: 10px; padding-top: 6px; }
+  .pdot  { height: 10px; width: 16px; border-radius: 5px; background: var(--border); }
+  .pdot.on { width: 40px; background: var(--primary); }
+
+  /* Content pad */
+  .screen-pad { padding: 0 40px 52px; flex: 1; overflow: hidden; }
+
+  /* Typography at 1.62× */
+  .s-title  { font-size: 36px; font-weight: 700; color: var(--primary); line-height: 1.2; margin-bottom: 20px; }
+  .s-body   { font-size: 22px; color: var(--text); line-height: 1.65; }
+  .s-label  { display: block; font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+
+  /* Buttons at 1.62× */
+  .s-btn-b { width: 100%; height: 84px; background: var(--blueBg); border-radius: 44px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 600; color: var(--primary); border: 2.5px solid var(--secondary); }
+  .s-btn-p { width: 100%; height: 84px; background: var(--bgStart); border-radius: 44px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; color: var(--primary); }
+  .s-btn-o { width: 100%; height: 84px; background: var(--white); border-radius: 44px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; color: var(--primary); border: 2.5px solid var(--primary); }
+
+  /* InfoKort at 1.62× */
+  .s-ik { background: var(--cardBg); border-radius: 20px; padding: 26px; border: 2px solid var(--border); margin-bottom: 16px; }
+  .s-ik-over { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+  .s-ik-txt  { font-size: 20px; color: var(--text); line-height: 1.55; }
+
+  /* Input at 1.62× */
+  .s-inp { width: 100%; padding: 22px 24px; border: 2.5px solid var(--border); border-radius: 14px; font-size: 22px; color: var(--primary); background: white; margin-bottom: 14px; display: flex; align-items: center; font-family: inherit; }
+  .s-inp.valid { border-color: var(--success); }
+  .s-inp.placeholder { color: var(--border); }
+  .s-inp-hint { font-size: 18px; color: var(--success); margin-top: -8px; margin-bottom: 12px; }
+
+  .sp12{height:12px} .sp16{height:16px} .sp18{height:18px} .sp20{height:20px}
+  .sp24{height:24px} .sp28{height:28px} .sp32{height:32px}
+
+  /* === Notification area (right side) === */
+  .notif-area {
+    position: absolute;
+    top: 520px;
+    left: 740px;
+    width: 510px;
+    z-index: 3;
+  }
+
+  .notif-label {
+    font-size: 28px; font-weight: 700; color: var(--secondary);
+    letter-spacing: 0.5px; text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  /* iOS-style notification card */
+  .notif-card {
+    background: rgba(248,248,250,0.98);
+    border-radius: 26px;
+    padding: 28px 28px 28px 28px;
+    box-shadow:
+      0 16px 48px rgba(0,0,0,0.16),
+      0 4px 12px rgba(0,0,0,0.08),
+      0 0 0 1px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+  }
+
+  .notif-header {
+    display: flex; align-items: center; margin-bottom: 14px;
+  }
+
+  .notif-app-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-right: 14px;
+  }
+
+  .notif-app-name { font-size: 20px; font-weight: 600; color: #3a3a3c; flex: 1; }
+  .notif-time { font-size: 18px; color: #8e8e93; }
+
+  .notif-body { font-size: 26px; color: #1c1c1e; line-height: 1.45; }
+
+  /* Explanation text */
+  .notif-explain {
+    font-size: 28px; color: var(--text); line-height: 1.55;
+    margin-bottom: 40px;
+  }
+
+  /* Second notification (SMS style) */
+  .sms-bubble {
+    background: #dcf8c6; /* WhatsApp-ish green, but let's use a more neutral color */
+    border-radius: 22px 22px 6px 22px;
+    padding: 24px 28px;
+    margin-left: 60px;
+    margin-bottom: 16px;
+    font-size: 26px; color: #1c1c1e; line-height: 1.45;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  .sms-meta {
+    margin-left: 60px;
+    font-size: 18px; color: #8e8e93;
+  }
+
+  /* Why important section */
+  .why-block {
+    background: var(--cardBg); border-radius: 20px; padding: 28px;
+    border: 2px solid var(--border);
+  }
+  .why-title { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+  .why-item { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+  .why-dot { width: 10px; height: 10px; border-radius: 5px; background: var(--secondary); margin-top: 9px; flex-shrink: 0; }
+  .why-txt { font-size: 22px; color: var(--text); line-height: 1.5; }
+
+  /* Bottom features */
+  .features {
+    position: absolute; bottom: 80px; left: 0; right: 0; z-index: 2;
+    display: flex; justify-content: center; gap: 24px;
+  }
+  .fpill {
+    background: var(--bgStart); border-radius: 999px; padding: 16px 36px;
+    font-size: 26px; font-weight: 600; color: var(--primary);
+    display: flex; align-items: center; gap: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bg"></div>
+
+<!-- Headline -->
+<div class="headline">
+  <span class="hl-eyebrow">Pårørende-support</span>
+  <h1 class="hl-main">Dine nærmeste<br>holdes opdateret</h1>
+  <p class="hl-sub">Automatisk besked til din pårørende, hvis du forsøger at fjerne beskyttelsen</p>
+</div>
+
+<!-- Left: Phone -->
+<div class="phone-wrap">
+  <div class="phone-frame">
+    <div class="phone-screen">
+      <div class="dyn-island"></div>
+
+      <div class="screen-scroll">
+
+        <!-- ScreenHeader step=2 -->
+        <div class="s-hdr">
+          <div class="s-hdr-row">
+            <img
+              src="../artifacts/mobile/assets/images/logo.png"
+              class="s-hdr-logo"
+              onerror="this.outerHTML='<span style=\'font-size:18px;font-weight:800;color:#1a2744;\'>Mindre på Spil</span>'"
+              alt="Mindre på Spil"
+            >
+          </div>
+          <div class="pdots">
+            <div class="pdot"></div>
+            <div class="pdot on"></div>
+            <div class="pdot"></div>
+            <div class="pdot"></div>
+          </div>
+        </div>
+
+        <div class="screen-pad">
+
+          <div class="s-title">Tilføj pårørende</div>
+
+          <p class="s-body">
+            Pårørende får besked når du tilføjer dem, når din selvudelukkelse udløber, og hvis appen eller blokeringen fjernes.
+          </p>
+
+          <div class="sp28"></div>
+
+          <!-- Added partner -->
+          <div class="s-ik">
+            <div class="s-ik-over">Anne Jensen</div>
+            <div class="s-ik-txt">+45 28 45 67 89</div>
+          </div>
+          <div class="s-ik">
+            <div class="s-ik-over">Lars Nielsen</div>
+            <div class="s-ik-txt">+45 53 72 88 14</div>
+          </div>
+
+          <div class="sp16"></div>
+
+          <!-- Name input -->
+          <span class="s-label">Tilføj endnu en — navn</span>
+          <div class="s-inp placeholder">eks. Anna Sørensen</div>
+
+          <!-- Phone input -->
+          <span class="s-label">Telefonnummer</span>
+          <div class="s-inp placeholder">eks. +45 12 34 56 78</div>
+
+          <div class="sp20"></div>
+
+          <!-- Buttons -->
+          <div class="s-btn-b">Tilføj pårørende</div>
+          <div class="sp18"></div>
+          <div class="s-btn-p">Fortsæt</div>
+          <div class="sp18"></div>
+          <div class="s-btn-o">Tilbage</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Right: Notification area -->
+<div class="notif-area">
+
+  <div class="notif-label">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" stroke="#4a7cc9" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    Automatisk notifikation
+  </div>
+
+  <!-- iOS notification style -->
+  <div class="notif-card">
+    <div class="notif-header">
+      <div class="notif-app-icon">
+        <svg width="28" height="32" viewBox="0 0 50 58" fill="none">
+          <path d="M25 2L4 11V28C4 40.5 13.2 52.1 25 55C36.8 52.1 46 40.5 46 28V11L25 2Z" fill="white" opacity="0.9"/>
+          <path d="M17 28.5L22.5 34L33.5 23" stroke="#1a2744" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="notif-app-name">Mindre på Spil</span>
+      <span class="notif-time">nu</span>
+    </div>
+    <div class="notif-body">
+      Pårørende får besked, hvis beskyttelsen fjernes
+    </div>
+  </div>
+
+  <!-- SMS bubble -->
+  <div style="font-size:22px; font-weight:600; color:var(--text); margin-bottom:16px; margin-left:4px;">
+    SMS til pårørende:
+  </div>
+  <div class="sms-bubble">
+    Hej Anne. Din pårørende har fjernet sin selvudelukkelse i appen Mindre på Spil. Kontakt personen, hvis du har spørgsmål.
+  </div>
+  <div class="sms-meta">Sendt automatisk · Mindre på Spil</div>
+
+  <div style="height:40px;"></div>
+
+  <!-- Why block -->
+  <div class="why-block">
+    <div class="why-title">Tre automatiske beskeder</div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <div class="why-txt">Når du tilføjer en pårørende</div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <div class="why-txt">Når din selvudelukkelse udløber</div>
+    </div>
+    <div class="why-item" style="margin-bottom:0;">
+      <div class="why-dot"></div>
+      <div class="why-txt">Hvis beskyttelsen fjernes før tid</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Feature pills -->
+<div class="features">
+  <div class="fpill">📬 SMS-besked</div>
+  <div class="fpill">⚡ Automatisk</div>
+  <div class="fpill">🔒 Ekstra sikkerhed</div>
+</div>
+
+</body>
+</html>

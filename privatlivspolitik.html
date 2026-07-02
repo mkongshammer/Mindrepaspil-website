@@ -81,60 +81,51 @@ footer a:hover { color: var(--white); }
   <a href="index.html" class="back-link">← Tilbage til forsiden</a>
   <div class="policy-tag">Juridisk</div>
   <h1>Privatlivspolitik</h1>
-  <p class="updated">Sidst opdateret: maj 2026</p>
+  <p class="updated">Sidst opdateret: juni 2026</p>
 
   <h2>1. Dataansvarlig</h2>
-  <p>Den dataansvarlige for behandlingen af dine personoplysninger er:</p>
-  <p>
-    Mindre på Spil<br>
-    CVR: 44814942<br>
-    Danmark<br>
-    E-mail: <a href="mailto:Andreas.Gye@gmail.com">Andreas.Gye@gmail.com</a>
-  </p>
+  <p>Mindre På Spil (CVR 46300718, Danmark) er dataansvarlig for behandlingen af dine personoplysninger. Kontakt: <a href="mailto:kontakt@mindrepaaspil.dk">kontakt@mindrepaaspil.dk</a>.</p>
 
-  <h2>2. Hvilke oplysninger indsamler vi</h2>
-  <p>Vi indsamler kun personoplysninger som du selv giver os, primært når du kontakter os via e-mail. Det kan inkludere:</p>
+  <h2>2. Hvilke data vi indsamler om dig</h2>
+  <p>Når du opretter dig, logger du ind med Apple eller Google. Vi modtager en unik, anonym identifikator fra Apple/Google og dit fulde navn (som du selv indtaster under "Mine informationer") gemmes på vores server, så det kan bruges i beskeder til din pårørende. Vi gemmer desuden: status for din selvudelukkelse (aktiv, slut eller fjernet før tid), den periode du har valgt, batteriniveau og om telefonen lader ved seneste statustjek (kun for at undgå falske alarmer ved fladt batteri), om DNS-blokeringen er aktiv, og dit notifikations-token (så vi kan sende dig beskeder og tjekke om appen stadig er installeret).</p>
+
+  <h2>3. Hvilke data vi indsamler om din pårørende</h2>
+  <p>Du indtaster selv din pårørendes navn og telefonnummer, så vi kan kontakte personen, hvis din selvudelukkelse afsluttes som planlagt, eller hvis beskyttelsen fjernes før tid.</p>
+
+  <h2>4. DNS-opslag</h2>
+  <p>Når din enhed slår et domæne op, tjekker vi det anonymt mod vores liste over kendte spiludbydere. Domæner, der ikke er blokeret, videresendes til Cloudflare (en ekstern DNS-udbyder) for at finde svaret, ligesom din internetudbyder normalt ville gøre. Cloudflare modtager kun selve domænenavnet, aldrig din IP-adresse eller andet, der kan identificere dig, opslaget sker fra vores egen server, ikke fra din enhed. Domæner, vi endnu ikke kender, sendes desuden automatisk til en AI-tjeneste (OpenAI), der vurderer om domænet er en spiludbyder, baseret på domænenavnet og selve sidens indhold, hentet af vores server. Heller ikke her sendes nogen oplysninger, der kan identificere dig som bruger.</p>
+
+  <h2>5. Tilknytning af computer</h2>
+  <p>Hvis du tilknytter en computer til din konto, gemmer vi enheds-id, platform, app-version og computerens netværksnavn (hostname), samt en engangskode til afinstallation.</p>
+
+  <h2>6. Hvad vi ikke gemmer</h2>
+  <p>Vores DNS-opslagslog kan ikke kobles til dig som person.</p>
+
+  <h2>7. Hvor længe vi opbevarer data</h2>
+  <p>For aktive brugere opbevares dine data hele tiden, nødvendigt for at sikre appens funktionalitet. Når selvudelukkelse er slut eller er blevet fjernet, og brugeren ikke selv har slettet deres profil, sletter vi automatisk alle data efter 12 måneder.</p>
+
+  <h2>8. Retsgrundlag</h2>
+  <p>Kontodata behandles for at kunne levere appens kernefunktion (legitim interesse). Pårørendes kontaktoplysninger behandles efter legitim interesse i at kunne advare en navngiven støtteperson, som du selv har valgt. Vores DNS-opslag og AI-vurdering af domæner er anonyme og indeholder ingen personoplysninger, de er derfor ikke omfattet af GDPR's regler om retsgrundlag.</p>
+
+  <h2>9. Hvem behandler data for os</h2>
   <ul>
-    <li>Navn</li>
-    <li>E-mailadresse</li>
-    <li>Eventuelle øvrige oplysninger du selv inkluderer i din henvendelse</li>
+    <li>Twilio sender SMS til din pårørende.</li>
+    <li>Expo leverer push-notifikationer til din egen telefon.</li>
+    <li>Cloudflare besvarer DNS-opslag, der ikke allerede er kendt af os (anonymt).</li>
+    <li>OpenAI vurderer ukendte domæner for at afgøre, om de er spiludbydere (kun domænenavn og sideindhold, ingen brugerdata).</li>
   </ul>
-  <p>Vi indsamler ikke oplysninger automatisk via hjemmesiden, og vi benytter ikke analyse- eller sporingsværktøjer som Google Analytics.</p>
 
-  <h2>3. Formål med behandlingen</h2>
-  <p>Dine oplysninger bruges udelukkende til at besvare din henvendelse og eventuelt indgå i et samarbejde eller dialog med dig. Vi videregiver ikke dine oplysninger til tredjeparter.</p>
+  <h2>10. Dine rettigheder som bruger</h2>
+  <p>Du kan til enhver tid slette din profil under "Mine informationer → Slet profil". Det sker øjeblikkeligt: din pårørende får besked om, at din konto er slettet, og alle dine data (pårørende-kontakt, notifikations-token, beskedhistorik, tilknyttede enheder og din statushistorik) fjernes permanent fra vores server. Du kan også til enhver tid fjerne en bestemt pårørende, dog ikke den sidste imens en selvudelukkelsesperiode er aktiv, da det er en del af appens kernebeskyttelse.</p>
 
-  <h2>4. Retsgrundlag</h2>
-  <p>Behandlingen af dine personoplysninger sker på grundlag af artikel 6, stk. 1, litra f i GDPR (legitim interesse), idet vi har en berettiget interesse i at besvare henvendelser rettet til os.</p>
+  <h2>11. Din pårørendes rettigheder</h2>
+  <p>Din pårørende kan til enhver tid selv framelde sig og få sine data slettet permanent ved at svare "STOP" på den SMS de modtager. Det sker med det samme, uden at du som bruger skal gøre noget.</p>
 
-  <h2>5. Opbevaring</h2>
-  <p>Vi opbevarer dine oplysninger så længe det er nødvendigt for at opfylde det formål, de er indsamlet til. Korrespondance via e-mail slettes typisk når dialogen er afsluttet og der ikke er et løbende samarbejde.</p>
+  <h2>12. Generelle rettigheder</h2>
+  <p>Du og din pårørende har som registrerede ret til indsigt, berigtigelse, sletning, begrænsning, indsigelse og dataportabilitet. Kontakt os på <a href="mailto:kontakt@mindrepaaspil.dk">kontakt@mindrepaaspil.dk</a> for at gøre brug af disse rettigheder.</p>
 
-  <h2>6. Cookies</h2>
-  <p>Hjemmesiden anvender ikke markedsførings-, sporings- eller analytiske cookies. Vi indsamler ikke data om besøgendes adfærd på siden.</p>
-  <p>Cloudflare, som leverer hjemmesidens tekniske infrastruktur, placerer teknisk nødvendige sikkerhedscookies på besøgendes enheder. Den primære cookie er <code>__cf_bm</code>, som anvendes til bot-beskyttelse og sikker trafikfiltrering. Denne cookie:</p>
-  <ul>
-    <li>Indsamler ikke persondata og bruges ikke til sporing eller profilering</li>
-    <li>Genereres uafhængigt for hvert besøg og kan ikke bruges til at følge brugere på tværs af sider</li>
-    <li>Udløber efter 30 minutters inaktivitet</li>
-    <li>Er klassificeret som strengt nødvendig og kræver ikke samtykke efter Cookiebekendtgørelsen</li>
-  </ul>
-  <p>Du kan læse mere om Cloudflares cookies på <a href="https://www.cloudflare.com/cookie-policy/" target="_blank">cloudflare.com/cookie-policy</a>.</p>
-
-  <h2>7. Dine rettigheder</h2>
-  <p>Du har efter GDPR følgende rettigheder i relation til dine personoplysninger:</p>
-  <ul>
-    <li><strong>Indsigt</strong> – du har ret til at se hvilke oplysninger vi har om dig</li>
-    <li><strong>Berigtigelse</strong> – du kan anmode om at få forkerte oplysninger rettet</li>
-    <li><strong>Sletning</strong> – du kan anmode om at få dine oplysninger slettet</li>
-    <li><strong>Begrænsning</strong> – du kan anmode om at behandlingen begrænses</li>
-    <li><strong>Indsigelse</strong> – du kan gøre indsigelse mod behandlingen</li>
-    <li><strong>Dataportabilitet</strong> – du kan modtage dine oplysninger i et struktureret format</li>
-  </ul>
-  <p>Du kan udøve dine rettigheder ved at kontakte os på <a href="mailto:Andreas.Gye@gmail.com">Andreas.Gye@gmail.com</a>.</p>
-
-  <h2>8. Klage til Datatilsynet</h2>
-  <p>Hvis du mener at vores behandling af dine personoplysninger er i strid med GDPR, har du ret til at indgive en klage til Datatilsynet:</p>
+  <h2>13. Klage til Datatilsynet</h2>
+  <p>Hvis du mener, at vores behandling af dine personoplysninger er i strid med GDPR, har du ret til at klage til Datatilsynet:</p>
   <p>
     Datatilsynet<br>
     Carl Jacobsens Vej 35<br>
@@ -142,8 +133,8 @@ footer a:hover { color: var(--white); }
     <a href="https://www.datatilsynet.dk" target="_blank">www.datatilsynet.dk</a>
   </p>
 
-  <h2>9. Ændringer til denne politik</h2>
-  <p>Vi forbeholder os retten til at opdatere denne privatlivspolitik. Den seneste version vil altid være tilgængelig på denne side med angivelse af opdateringsdato.</p>
+  <h2>14. Ændringer til denne politik</h2>
+  <p>Vi forbeholder os retten til at opdatere denne privatlivspolitik. Den nyeste version er altid tilgængelig her på siden med angivelse af opdateringsdato.</p>
 </div>
 
 <footer>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Mindre på Spil – Min side</title>
+<meta name="viewport" content="width=1290">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary:  #1a2744;
+    --secondary:#4a7cc9;
+    --bgStart:  #dce6f5;
+    --text:     #5a6378;
+    --success:  #1a7a4a;
+    --blueBg:   #EAF2FB;
+    --border:   #c5cad4;
+    --white:    #ffffff;
+    --cardBg:   #F4F6FA;
+  }
+  body {
+    width: 1290px; height: 2796px;
+    background: #fff; overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  .top-bg {
+    position: absolute; top: 0; left: 0; right: 0; height: 680px;
+    background: linear-gradient(180deg, #e8f1fb 0%, #ffffff 100%);
+    z-index: 0;
+  }
+  .deco-blob {
+    position: absolute; border-radius: 50%; z-index: 0; pointer-events: none;
+    width: 1000px; height: 1000px;
+    background: radial-gradient(circle, rgba(220,230,245,0.5) 0%, transparent 65%);
+    top: -300px; left: -300px;
+  }
+
+  /* Headline */
+  .headline {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 90px 80px 0; gap: 26px;
+  }
+  .hl-eyebrow { font-size: 26px; font-weight: 700; color: var(--secondary); letter-spacing: 2px; text-transform: uppercase; }
+  .hl-main    { font-size: 80px; font-weight: 800; color: var(--primary); text-align: center; line-height: 1.06; letter-spacing: -2px; }
+  .hl-sub     { font-size: 34px; font-weight: 400; color: var(--text); text-align: center; line-height: 1.45; max-width: 950px; }
+
+  /* Phone */
+  .phone-wrap { position: absolute; top: 480px; left: 245px; z-index: 2; }
+  .phone-frame {
+    width: 800px; height: 1734px;
+    background: #1C1C1E; border-radius: 76px; position: relative;
+    box-shadow:
+      0 50px 100px rgba(0,0,0,0.34), 0 16px 36px rgba(0,0,0,0.16),
+      inset 0 0 0 2px rgba(255,255,255,0.07), inset 0 0 0 6px #252527;
+  }
+  .phone-frame::before {
+    content: ''; position: absolute;
+    right: -9px; top: 380px; width: 8px; height: 140px;
+    background: #2a2a2c; border-radius: 0 5px 5px 0;
+  }
+  .phone-frame::after {
+    content: ''; position: absolute;
+    left: -9px; top: 300px; width: 8px; height: 90px;
+    background: #2a2a2c; border-radius: 5px 0 0 5px;
+    box-shadow: 0 120px 0 #2a2a2c;
+  }
+  .phone-screen {
+    position: absolute; top: 16px; left: 16px; right: 16px; bottom: 16px;
+    background: #fff; border-radius: 62px; overflow: hidden;
+  }
+  .dyn-island {
+    position: absolute; top: 22px; left: 50%; transform: translateX(-50%);
+    width: 170px; height: 52px; background: #1C1C1E; border-radius: 27px; z-index: 100;
+  }
+
+  /* Screen scroll area: 768×1702 */
+  .screen-scroll {
+    position: absolute; inset: 0; overflow: hidden;
+  }
+  .screen-content {
+    padding: 0 48px 64px;
+  }
+
+  /* Logo header block — like MinSideScreen */
+  .s-logo-hdr {
+    padding-top: 76px; padding-bottom: 8px;
+  }
+  .s-hdr-logo { height: 60px; width: auto; max-width: 264px; object-fit: contain; object-position: left; }
+
+  /* minSideTitel: 24px → 48px, center, mb 16 */
+  .s-min-titel {
+    font-size: 48px; font-weight: 700; color: var(--primary);
+    text-align: center; margin-bottom: 16px;
+  }
+
+  /* small center */
+  .s-small-c { font-size: 24px; color: var(--text); text-align: center; }
+
+  /* slutDato: 28px → 56px fw900 center mb 32 */
+  .s-slut-dato {
+    font-size: 56px; font-weight: 900; color: var(--primary);
+    text-align: center; margin-bottom: 32px; margin-top: 12px;
+  }
+
+  /* Shield + "Blokering aktiv" block */
+  .shield-block {
+    display: flex; flex-direction: column; align-items: center; margin: 0 0 24px;
+  }
+  .shield-circle {
+    width: 128px; height: 128px; border-radius: 64px;
+    background: var(--bgStart);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 60px; margin-bottom: 8px;
+  }
+  .shield-label {
+    font-size: 24px; font-weight: 600; color: var(--primary);
+  }
+
+  /* Progress bar */
+  .progress-wrap { margin: 8px 0 20px; }
+  .progress-label {
+    display: flex; justify-content: space-between;
+    font-size: 20px; color: var(--text); margin-bottom: 10px;
+  }
+  .progress-track {
+    width: 100%; height: 16px; border-radius: 8px;
+    background: var(--bgStart); overflow: hidden;
+  }
+  .progress-fill {
+    width: 50%; height: 100%; border-radius: 8px;
+    background: var(--secondary);
+  }
+
+  /* Divider: borderTop 1 → 2, marginVertical 16 → 32 */
+  .s-div { border-top: 2px solid var(--border); margin: 32px 0; }
+
+  /* sectionTitle: 18px → 36px, fw700, center, mb 10 → 20 */
+  .s-sec-title { font-size: 36px; font-weight: 700; color: var(--primary); text-align: center; margin-bottom: 20px; }
+
+  /* small center text */
+  .s-sec-sub { font-size: 22px; color: var(--text); text-align: center; margin-bottom: 20px; line-height: 1.5; }
+
+  /* Buttons */
+  .s-btn-p { width: 100%; height: 104px; background: var(--bgStart); border-radius: 55px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; color: var(--primary); }
+  .s-btn-b { width: 100%; height: 104px; background: var(--blueBg); border-radius: 55px; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 600; color: var(--primary); border: 3px solid var(--secondary); }
+
+  /* InfoKort */
+  .s-ik { background: var(--cardBg); border-radius: 24px; padding: 32px; border: 2px solid var(--border); margin-bottom: 20px; }
+  .s-ik-over { font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+  .s-ik-txt  { font-size: 22px; color: var(--text); line-height: 1.55; }
+
+  .sp12{height:12px} .sp16{height:16px} .sp20{height:20px} .sp24{height:24px} .sp32{height:32px}
+
+  /* Feature pills */
+  .features {
+    position: absolute; bottom: 110px; left: 0; right: 0; z-index: 2;
+    display: flex; justify-content: center; gap: 24px;
+  }
+  .fpill {
+    background: var(--bgStart); border-radius: 999px; padding: 18px 40px;
+    font-size: 28px; font-weight: 600; color: var(--primary);
+    display: flex; align-items: center; gap: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bg"></div>
+<div class="deco-blob"></div>
+
+<!-- Headline -->
+<div class="headline">
+  <span class="hl-eyebrow">Status</span>
+  <h1 class="hl-main">Hold styr på<br>din periode</h1>
+  <p class="hl-sub">Din selvudelukkelse, din slutdato og dine pårørende – samlet ét sted</p>
+</div>
+
+<!-- Phone -->
+<div class="phone-wrap">
+  <div class="phone-frame">
+    <div class="phone-screen">
+      <div class="dyn-island"></div>
+
+      <div class="screen-scroll">
+        <div class="screen-content">
+
+          <!-- Logo header -->
+          <div class="s-logo-hdr">
+            <img
+              src="../artifacts/mobile/assets/images/logo.png"
+              class="s-hdr-logo"
+              onerror="this.outerHTML='<span style=\'font-size:22px;font-weight:800;color:#1a2744;\'>Mindre på Spil</span>'"
+              alt="Mindre på Spil"
+            >
+          </div>
+          <div class="sp20"></div>
+
+          <!-- "Min side" title -->
+          <div class="s-min-titel">Min side</div>
+
+          <!-- Exclusion date -->
+          <p class="s-small-c">Din udelukkelsesperiode varer til:</p>
+          <div class="s-slut-dato">3. januar 2027</div>
+
+          <!-- Shield icon + label -->
+          <div class="shield-block">
+            <div class="shield-circle">🛡</div>
+            <span class="shield-label">Blokering aktiv</span>
+          </div>
+
+          <!-- Progress bar (visual addition) -->
+          <div class="progress-wrap">
+            <div class="progress-label">
+              <span>3. jan 2026</span>
+              <span style="font-weight:600; color:var(--primary);">6 mdr. tilbage</span>
+              <span>3. jan 2027</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="s-div"></div>
+
+          <!-- Selvudelukkelse section -->
+          <div class="s-sec-title">Selvudelukkelse</div>
+          <p class="s-sec-sub">
+            Du er selvudelukket frem til <strong>3. januar 2027</strong>. Din selvudelukkelse kan ikke afbrydes.
+          </p>
+          <div class="s-btn-b">Tilføj tid til selvudelukkelse</div>
+
+          <div class="s-div"></div>
+
+          <!-- Pårørende section -->
+          <div class="s-sec-title">Dine pårørende</div>
+          <div class="s-ik">
+            <div class="s-ik-over">Anne Jensen</div>
+            <div class="s-ik-txt">+45 28 45 67 89</div>
+          </div>
+          <div class="s-btn-b">Tilføj pårørende</div>
+
+          <div class="s-div"></div>
+
+          <!-- Computer section preview -->
+          <div class="s-sec-title">Tilknyt din computer</div>
+          <p class="s-sec-sub">Få samme blokering på din Mac eller Windows-PC.</p>
+          <div class="s-btn-b">Tilknyt computer</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Feature pills -->
+<div class="features">
+  <div class="fpill">🛡 Blokering aktiv</div>
+  <div class="fpill">📊 Statusoverblik</div>
+  <div class="fpill">👥 Pårørende-liste</div>
+</div>
+
+</body>
+</html>

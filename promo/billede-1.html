@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Mindre på Spil – Billede 1</title>
+<meta name="viewport" content="width=1290">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary:  #1a2744;
+    --secondary:#4a7cc9;
+    --bgStart:  #dce6f5;
+    --text:     #5a6378;
+    --success:  #1a7a4a;
+    --blueBg:   #EAF2FB;
+    --border:   #c5cad4;
+    --white:    #ffffff;
+    --cardBg:   #F4F6FA;
+  }
+  body {
+    width: 1290px; height: 2796px;
+    background: #ffffff;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  /* Top gradient bg */
+  .top-bg {
+    position: absolute; top: 0; left: 0; right: 0; height: 900px;
+    background: linear-gradient(180deg, #e4eef9 0%, #f0f6fc 60%, #ffffff 100%);
+    z-index: 0;
+  }
+  /* Subtle radial accent */
+  .deco-circle {
+    position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+    width: 1000px; height: 1000px;
+    background: radial-gradient(circle, rgba(74,124,201,0.09) 0%, transparent 65%);
+    top: -200px; left: 145px;
+  }
+
+  /* ── Logo area (top of image) ── */
+  .logo-area {
+    position: absolute; top: 80px; left: 0; right: 0; z-index: 2;
+    display: flex; justify-content: center; align-items: center;
+    height: 160px;
+  }
+  .logo-area img {
+    height: 80px; width: auto; max-width: 600px;
+    object-fit: contain;
+  }
+  /* Fallback if image not found */
+  .logo-fallback {
+    display: flex; align-items: center; gap: 20px;
+  }
+  .logo-fallback-icon {
+    width: 80px; height: 80px; background: var(--primary); border-radius: 22px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .logo-fallback-name {
+    font-size: 44px; font-weight: 800; color: var(--primary); letter-spacing: -1px;
+  }
+
+  /* ── Tagline ── */
+  .tagline {
+    position: absolute; top: 280px; left: 0; right: 0; z-index: 2;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 0 80px; gap: 30px;
+  }
+  .tl-main {
+    font-size: 84px; font-weight: 800; color: var(--primary);
+    text-align: center; line-height: 1.05; letter-spacing: -3px;
+  }
+  .tl-main-accent { color: var(--secondary); }
+  .tl-sub {
+    font-size: 34px; font-weight: 400; color: var(--text);
+    text-align: center; line-height: 1.55; max-width: 980px;
+  }
+
+  /* ── Phone (front-facing, no 3D transform) ── */
+  .phone-wrap {
+    position: absolute; top: 640px; left: 245px; z-index: 2;
+  }
+  .phone-frame {
+    width: 800px; height: 1734px;
+    background: #1C1C1E; border-radius: 76px; position: relative;
+    box-shadow:
+      0 0 0 2px rgba(255,255,255,0.06) inset,
+      0 0 0 6px #252527 inset,
+      0 50px 120px rgba(0,0,0,0.32),
+      0 16px 40px rgba(0,0,0,0.14);
+  }
+  .phone-frame::before {
+    content: ''; position: absolute;
+    right: -9px; top: 380px; width: 8px; height: 140px;
+    background: #2a2a2c; border-radius: 0 5px 5px 0;
+  }
+  .phone-frame::after {
+    content: ''; position: absolute;
+    left: -9px; top: 300px; width: 8px; height: 90px;
+    background: #2a2a2c; border-radius: 5px 0 0 5px;
+    box-shadow: 0 120px 0 #2a2a2c;
+  }
+  .phone-screen {
+    position: absolute; top: 16px; left: 16px; right: 16px; bottom: 16px;
+    background: #ffffff; border-radius: 62px; overflow: hidden;
+  }
+  .dyn-island {
+    position: absolute; top: 22px; left: 50%; transform: translateX(-50%);
+    width: 170px; height: 52px; background: #1C1C1E; border-radius: 27px; z-index: 100;
+  }
+
+  /* ── Screen: VelkomstScreen at 2× scale ── */
+  /* Screen inner: 768 × 1702px */
+  .s-flex-col {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+
+  .v-logo-area {
+    flex: 3;
+    display: flex; align-items: center; justify-content: center;
+    padding-top: 80px;
+  }
+  .v-logo-area img {
+    height: 72px; width: auto; max-width: 320px; object-fit: contain;
+  }
+
+  .v-tagline {
+    font-size: 28px; color: var(--text); text-align: center;
+    line-height: 1.65; padding: 0 64px 40px;
+  }
+
+  .flex1 { flex: 1; }
+
+  .v-btns { padding: 0 48px 64px; }
+
+  .s-btn-p {
+    width: 100%; height: 104px; background: var(--bgStart);
+    border-radius: 55px; display: flex; align-items: center; justify-content: center;
+    font-size: 32px; font-weight: 700; color: var(--primary);
+  }
+  .s-btn-o {
+    width: 100%; height: 104px; background: var(--white);
+    border-radius: 55px; display: flex; align-items: center; justify-content: center;
+    font-size: 32px; font-weight: 700; color: var(--primary);
+    border: 3px solid var(--primary); margin-top: 24px;
+  }
+  .v-footer-link {
+    font-size: 22px; color: var(--border); text-align: center;
+    margin-top: 28px; text-decoration: underline;
+  }
+
+  /* ── Feature pills at bottom ── */
+  .features {
+    position: absolute; bottom: 110px; left: 0; right: 0; z-index: 2;
+    display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+    padding: 0 60px;
+  }
+  .fpill {
+    background: var(--bgStart); border-radius: 999px; padding: 18px 40px;
+    font-size: 28px; font-weight: 600; color: var(--primary);
+    display: flex; align-items: center; gap: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bg"></div>
+<div class="deco-circle"></div>
+
+<!-- ── Logo ── -->
+<div class="logo-area">
+  <img
+    src="../artifacts/mobile/assets/images/logo.png"
+    alt="Mindre på Spil"
+    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+  >
+  <div class="logo-fallback" style="display:none;">
+    <div class="logo-fallback-icon">
+      <svg width="40" height="46" viewBox="0 0 50 58" fill="none">
+        <path d="M25 2L4 11V28C4 40.5 13.2 52.1 25 55C36.8 52.1 46 40.5 46 28V11L25 2Z" fill="white"/>
+        <path d="M17 28.5L22.5 34L33.5 23" stroke="#1a2744" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="logo-fallback-name">Mindre på Spil</span>
+  </div>
+</div>
+
+<!-- ── Tagline ── -->
+<div class="tagline">
+  <h1 class="tl-main">
+    Tag kontrollen tilbage<br>
+    med <span class="tl-main-accent">Mindre på Spil</span>
+  </h1>
+  <p class="tl-sub">
+    Gratis selvudelukkelse fra pengespil,<br>med pårørende som dit sikkerhedsnet
+  </p>
+</div>
+
+<!-- ── Phone ── -->
+<div class="phone-wrap">
+  <div class="phone-frame">
+    <div class="phone-screen">
+      <div class="dyn-island"></div>
+
+      <div class="s-flex-col">
+
+        <!-- Logo inside phone -->
+        <div class="v-logo-area">
+          <img
+            src="../artifacts/mobile/assets/images/logo.png"
+            alt="Mindre på Spil"
+            onerror="this.outerHTML='<div style=\'text-align:center\'><div style=\'width:80px;height:80px;background:#1a2744;border-radius:20px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px\'><svg width=\'40\' height=\'46\' viewBox=\'0 0 50 58\' fill=\'none\'><path d=\'M25 2L4 11V28C4 40.5 13.2 52.1 25 55C36.8 52.1 46 40.5 46 28V11L25 2Z\' fill=\'white\'/></svg></div><br><span style=\'font-size:28px;font-weight:800;color:#1a2744;\'>Mindre på Spil</span></div>'"
+          >
+        </div>
+
+        <!-- App welcome text -->
+        <p class="v-tagline">
+          Det første skridt mod<br>større kontrol overfor pengespil
+        </p>
+
+        <div class="flex1"></div>
+
+        <!-- Buttons -->
+        <div class="v-btns">
+          <div class="s-btn-p">Opret dig</div>
+          <div class="s-btn-o">Log ind</div>
+          <p class="v-footer-link">www.mindrepaaspil.dk</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Feature pills ── -->
+<div class="features">
+  <div class="fpill">✓ Gratis at bruge</div>
+  <div class="fpill">🛡 Blokering aktiv med det samme</div>
+  <div class="fpill">🔒 Kan ikke afbrydes</div>
+</div>
+
+</body>
+</html>

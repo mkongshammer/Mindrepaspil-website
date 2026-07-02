@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=320">
+<title>Bekræftelse</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #1a2744; --secondary: #4a7cc9; --bgStart: #dce6f5;
+    --text: #5a6378; --border: #c5cad4; --white: #ffffff; --cardBg: #F4F6FA;
+    --success: #1a7a4a; --successBg: #EDF7ED;
+  }
+  html, body { width: 320px; height: 693px; overflow: hidden; background: transparent; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; }
+
+  .phone {
+    width: 320px; height: 693px;
+    background: #1C1C1E; border-radius: 32px; position: relative;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset, 0 0 0 4px #252527 inset;
+  }
+  .phone::before {
+    content: ''; position: absolute; right: -4px; top: 116px;
+    width: 4px; height: 52px; background: #2a2a2c; border-radius: 0 3px 3px 0;
+  }
+  .phone::after {
+    content: ''; position: absolute; left: -4px; top: 92px;
+    width: 4px; height: 34px; background: #2a2a2c; border-radius: 3px 0 0 3px;
+    box-shadow: 0 46px 0 #2a2a2c;
+  }
+
+  .screen {
+    position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px;
+    background: #fff; border-radius: 26px; overflow: hidden;
+  }
+  .di {
+    position: absolute; top: 9px; left: 50%; transform: translateX(-50%);
+    width: 102px; height: 29px; background: #1C1C1E; border-radius: 15px; z-index: 10;
+  }
+
+  .s-content {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 52px 19px 18px;
+    overflow: hidden;
+  }
+
+  .check-circle {
+    width: 62px; height: 62px; border-radius: 31px;
+    background: var(--success);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-bottom: 13px;
+  }
+  .check-mark { color: #fff; font-size: 28px; line-height: 1; }
+
+  .s-title { font-size: 17px; font-weight: 700; color: var(--primary); text-align: center; margin-bottom: 8px; }
+  .s-body  { font-size: 10px; color: var(--text); text-align: center; line-height: 1.65; margin-bottom: 11px; max-width: 260px; }
+
+  .date-lbl { font-size: 9px; color: var(--text); text-align: center; margin-bottom: 2px; }
+  .date-val { font-size: 13px; font-weight: 800; color: var(--primary); text-align: center; margin-bottom: 11px; }
+
+  .ik {
+    width: 100%; background: var(--cardBg); border-radius: 9px;
+    padding: 10px 12px; border: 1px solid var(--border); margin-bottom: 11px;
+  }
+  .ik-over { font-size: 10.5px; font-weight: 700; color: var(--primary); margin-bottom: 3px; }
+  .ik-txt  { font-size: 9.5px; color: var(--text); line-height: 1.6; }
+
+  .btn-p {
+    width: 100%; height: 40px; background: var(--primary); border-radius: 23px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: #fff;
+  }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="screen">
+    <div class="di"></div>
+
+    <div class="s-content">
+      <div class="check-circle">
+        <span class="check-mark">✓</span>
+      </div>
+
+      <div class="s-title">Du er registreret!</div>
+
+      <p class="s-body">Du er nu tilmeldt selvudelukkelse. I den kommende periode vil du ikke kunne tilgå spiludbydere for pengespil.</p>
+
+      <p class="date-lbl">Din selvudelukkelse udløber d.</p>
+      <div class="date-val">1. juli 2027</div>
+
+      <div class="ik">
+        <div class="ik-over">Din pårørende holdes opdateret</div>
+        <div class="ik-txt">Hvis du sletter appen eller fjerner blokeringen før din selvudelukkelsesperiode er overstået, bliver din pårørende notificeret med det samme.</div>
+      </div>
+
+      <div class="btn-p">Gå til Min side</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

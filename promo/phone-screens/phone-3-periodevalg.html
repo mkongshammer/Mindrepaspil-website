@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=320">
+<title>Periodevalg</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #1a2744; --secondary: #4a7cc9; --bgStart: #dce6f5;
+    --text: #5a6378; --border: #c5cad4; --white: #ffffff; --cardBg: #F4F6FA;
+  }
+  html, body { width: 320px; height: 693px; overflow: hidden; background: transparent; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; }
+
+  .phone {
+    width: 320px; height: 693px;
+    background: #1C1C1E; border-radius: 32px; position: relative;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset, 0 0 0 4px #252527 inset;
+  }
+  .phone::before {
+    content: ''; position: absolute; right: -4px; top: 116px;
+    width: 4px; height: 52px; background: #2a2a2c; border-radius: 0 3px 3px 0;
+  }
+  .phone::after {
+    content: ''; position: absolute; left: -4px; top: 92px;
+    width: 4px; height: 34px; background: #2a2a2c; border-radius: 3px 0 0 3px;
+    box-shadow: 0 46px 0 #2a2a2c;
+  }
+
+  .screen {
+    position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px;
+    background: #fff; border-radius: 26px; overflow: hidden;
+  }
+  .di {
+    position: absolute; top: 9px; left: 50%; transform: translateX(-50%);
+    width: 102px; height: 29px; background: #1C1C1E; border-radius: 15px; z-index: 10;
+  }
+
+  .s-hdr { padding: 44px 19px 8px; }
+  .s-hdr-logo { height: 22px; width: auto; max-width: 100px; object-fit: contain; object-position: left; }
+  .logo-fb { font-size: 10px; font-weight: 800; color: var(--primary); }
+  .pdots { display: flex; justify-content: center; gap: 4px; margin-top: 5px; }
+  .pdot { height: 5px; width: 8px; border-radius: 3px; background: var(--border); }
+  .pdot.on { width: 18px; background: var(--primary); }
+
+  .s-scroll {
+    position: absolute; top: 88px; left: 0; right: 0; bottom: 0;
+    overflow: hidden; padding: 0 19px 14px;
+  }
+
+  .s-title { font-size: 15px; font-weight: 700; color: var(--primary); line-height: 1.2; margin-bottom: 5px; }
+  .s-body  { font-size: 10px; color: var(--text); line-height: 1.6; margin-bottom: 10px; }
+
+  /* Period cards */
+  .pcrd {
+    width: 100%; border-radius: 8px; border: 1.5px solid var(--border);
+    background: var(--cardBg); padding: 9px 12px;
+    text-align: center; margin-bottom: 6px; position: relative;
+  }
+  .pcrd.sel { border-color: var(--primary); background: var(--bgStart); }
+  .pcrd-txt { font-size: 11.5px; font-weight: 600; color: var(--text); }
+  .pcrd-txt.sel { color: var(--primary); }
+  .badge {
+    position: absolute; top: -8px; right: 8px;
+    background: var(--primary); border-radius: 999px; padding: 2px 7px;
+    font-size: 8px; font-weight: 700; color: white;
+  }
+
+  /* Preview box */
+  .preview {
+    background: var(--bgStart); border-radius: 8px; padding: 9px 12px;
+    text-align: center; margin-bottom: 10px;
+  }
+  .preview-lbl { font-size: 9px; color: var(--text); margin-bottom: 2px; }
+  .preview-date { font-size: 12px; font-weight: 800; color: var(--primary); }
+
+  .btn-p { width: 100%; height: 38px; background: var(--primary); border-radius: 23px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 7px; }
+  .btn-o { width: 100%; height: 38px; background: transparent; border-radius: 23px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--primary); border: 1.5px solid var(--primary); }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="screen">
+    <div class="di"></div>
+
+    <div class="s-hdr">
+      <img
+        src="../../MindrePa_Spil_logo_transparent.png"
+        class="s-hdr-logo"
+        alt="Mindre på Spil"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+      >
+      <span class="logo-fb" style="display:none;">Mindre på Spil</span>
+      <div class="pdots">
+        <div class="pdot"></div>
+        <div class="pdot"></div>
+        <div class="pdot on"></div>
+        <div class="pdot"></div>
+      </div>
+    </div>
+
+    <div class="s-scroll">
+      <div class="s-title">Midlertidig selvudelukkelse</div>
+      <p class="s-body">Du kan selv vælge hvor længe du ønsker at pause dit spil.</p>
+
+      <div class="pcrd">
+        <div class="pcrd-txt">1 måned</div>
+      </div>
+      <div class="pcrd">
+        <div class="pcrd-txt">3 måneder</div>
+      </div>
+      <div class="pcrd">
+        <div class="pcrd-txt">6 måneder</div>
+      </div>
+      <div class="pcrd sel">
+        <div class="badge">Anbefalet</div>
+        <div class="pcrd-txt sel">12 måneder</div>
+      </div>
+
+      <div class="preview">
+        <div class="preview-lbl">Selvudelukkelse frem til</div>
+        <div class="preview-date">1. juli 2027</div>
+      </div>
+
+      <div class="btn-p">Fortsæt</div>
+      <div class="btn-o">Tilbage</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

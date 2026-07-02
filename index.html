@@ -257,88 +257,114 @@ footer a:hover { color: var(--white); }
   .hero-bg { display: none; }
 }
 
-/* TIDSLINJE */
+/* SÅDAN VIRKER DET - STEP CAROUSEL */
 #tidslinje { background: var(--light-gray); }
-.timeline-wrapper {
-  margin-top: 56px;
-  position: relative;
+.steps-carousel { margin-top: 56px; }
+.steps-carousel-stage { display: flex; align-items: center; justify-content: center; gap: 28px; }
+.steps-arrow {
+  width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+  background: var(--white); border: 2px solid var(--navy); color: var(--navy);
+  font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background .2s, color .2s, transform .2s; padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-.timeline-track {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  position: relative;
+.steps-arrow:hover { background: var(--navy); color: var(--white); transform: scale(1.06); }
+
+.steps-phone { position: relative; flex-shrink: 0; }
+.steps-phone-frame {
+  width: 240px; height: 520px; position: relative; border-radius: 38px; overflow: hidden;
+  box-shadow: 0 24px 60px rgba(26,39,68,0.28);
 }
-.timeline-track::before {
-  content: '';
-  position: absolute;
-  left: 36px;
-  top: 24px;
-  bottom: 24px;
-  width: 3px;
-  background: linear-gradient(to bottom, var(--blue), var(--navy));
-  border-radius: 2px;
+.step-screen {
+  position: absolute; top: 0; left: 0; width: 320px; height: 693px; border: 0;
+  display: none; opacity: 0; transition: opacity .35s ease;
+  transform: scale(0.75); transform-origin: top left;
 }
-.timeline-step {
-  display: flex;
-  align-items: flex-start;
-  gap: 28px;
-  padding: 0 0 40px 0;
-  position: relative;
-}
-.timeline-step:last-child { padding-bottom: 0; }
-.step-number {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: var(--navy);
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: 700;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 8px 24px rgba(26,39,68,0.3);
-  transition: transform .2s, box-shadow .2s;
-}
-.timeline-step:hover .step-number {
-  transform: scale(1.08);
-  box-shadow: 0 12px 32px rgba(26,39,68,0.4);
-}
-.step-content {
-  padding-top: 12px;
-}
-.step-content h3 {
-  font-size: 18px;
-  color: var(--navy);
-  margin-bottom: 6px;
-}
-.step-content p {
-  font-size: 14px;
-  color: var(--gray);
-  line-height: 1.65;
-  max-width: 540px;
-}
-.step-arrow {
-  position: absolute;
-  left: 34px;
-  bottom: -2px;
-  width: 7px;
-  height: 7px;
-  border-right: 3px solid var(--blue);
-  border-bottom: 3px solid var(--blue);
-  transform: rotate(45deg);
-  z-index: 2;
-}
-.timeline-step:last-child .step-arrow { display: none; }
+.step-screen.active { display: block; opacity: 1; }
+
+/* mini phone content */
+.mp-logo-row { display: flex; align-items: center; padding: 16px 16px 4px; }
+.mp-logo-row img { height: 16px; width: auto; max-width: 100px; object-fit: contain; }
+.mp-dots { display: flex; justify-content: center; gap: 4px; padding: 5px 0 8px; }
+.mp-dot { width: 7px; height: 3px; border-radius: 2px; background: #c5cad4; }
+.mp-dot.on { width: 16px; background: var(--navy); }
+.mp-pad { padding: 0 16px 16px; flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+.mp-title { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.25; }
+.mp-body { font-size: 8px; color: var(--gray); line-height: 1.55; margin-bottom: 10px; }
+.mp-card { background: var(--light-gray); border: 1px solid #e1e5eb; border-radius: 9px; padding: 8px 10px; margin-bottom: 6px; }
+.mp-card-name { font-size: 9px; font-weight: 700; color: var(--navy); }
+.mp-card-sub { font-size: 7.5px; color: var(--gray); }
+.mp-input-label { display: block; font-size: 7.5px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+.mp-input { border: 1.5px solid #c5cad4; border-radius: 7px; padding: 6px 9px; font-size: 7.5px; color: #a9afba; margin-bottom: 8px; }
+.mp-btn { width: 100%; border-radius: 17px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; margin-bottom: 7px; }
+.mp-btn-primary { background: var(--light-blue); color: var(--navy); }
+.mp-btn-outline { background: #fff; border: 1.5px solid var(--navy); color: var(--navy); }
+.mp-btn-blue { background: #EAF2FB; border: 1.5px solid var(--blue); color: var(--navy); font-weight: 600; }
+.mp-footer-link { font-size: 7px; color: #c5cad4; text-align: center; text-decoration: underline; margin-top: 2px; }
+.mp-spacer { flex: 1; }
+
+.mp-pcard { border: 1.5px solid #c5cad4; background: var(--light-gray); border-radius: 9px; padding: 8px; margin-bottom: 6px; text-align: center; position: relative; font-size: 8.5px; font-weight: 600; color: var(--gray); }
+.mp-pcard.sel { border-color: var(--navy); background: var(--light-blue); color: var(--navy); }
+.mp-pcard-badge { position: absolute; top: -8px; right: 8px; background: var(--navy); color: #fff; font-size: 6.5px; font-weight: 700; border-radius: 10px; padding: 2px 7px; }
+.mp-preview { background: var(--light-blue); border-radius: 9px; padding: 8px; text-align: center; margin-bottom: 8px; }
+.mp-preview-label { font-size: 7px; color: var(--gray); }
+.mp-preview-date { font-size: 11px; font-weight: 800; color: var(--navy); }
+
+.mp-check { width: 36px; height: 36px; border-radius: 50%; background: #1a7a4a; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 17px; margin: 26px auto 10px; }
+.mp-confirm-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.mp-small { font-size: 7.5px; color: var(--gray); margin-bottom: 4px; }
+.mp-slutdato { font-size: 13px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+.mp-infocard { background: var(--light-gray); border: 1px solid #e1e5eb; border-radius: 9px; padding: 9px; margin: 0 4px 10px; text-align: left; }
+.mp-infocard-title { font-size: 8.5px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+.mp-infocard-text { font-size: 7.2px; color: var(--gray); line-height: 1.45; }
+
+.mp-minside-title { font-size: 12px; font-weight: 700; text-align: center; color: var(--navy); margin: 2px 0 4px; }
+.mp-shield { display: flex; flex-direction: column; align-items: center; margin: 6px 0; }
+.mp-shield-circle { width: 30px; height: 30px; border-radius: 50%; background: var(--light-blue); display: flex; align-items: center; justify-content: center; font-size: 14px; margin-bottom: 3px; }
+.mp-shield-label { font-size: 8px; font-weight: 600; color: var(--navy); }
+.mp-progress-label { display: flex; justify-content: space-between; font-size: 6.2px; color: var(--gray); margin-bottom: 3px; }
+.mp-progress-track { height: 5px; border-radius: 3px; background: var(--light-blue); overflow: hidden; margin-bottom: 8px; }
+.mp-progress-fill { width: 50%; height: 100%; background: var(--blue); }
+.mp-divider { border-top: 1px solid #e5e8ee; margin: 8px 0; }
+.mp-section-title { font-size: 9.5px; font-weight: 700; color: var(--navy); text-align: center; margin-bottom: 5px; }
+
+.steps-caption { text-align: center; margin-top: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
+.steps-caption h3 { font-size: 19px; color: var(--navy); margin-bottom: 8px; }
+.steps-caption p { font-size: 14px; color: var(--gray); line-height: 1.65; }
+.steps-dots { display: flex; justify-content: center; gap: 8px; margin-top: 22px; }
+.steps-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(26,39,68,0.2); cursor: pointer; transition: all .3s; }
+.steps-dot.active { background: var(--navy); width: 22px; border-radius: 4px; }
 
 @media (max-width: 768px) {
-  .timeline-track::before { left: 28px; }
-  .step-number { width: 56px; height: 56px; font-size: 18px; }
-  .step-arrow { left: 26px; }
+  .steps-carousel-stage { gap: 12px; }
+  .steps-arrow { width: 36px; height: 36px; font-size: 15px; }
+  .steps-phone-frame { width: 190px; height: 412px; border-radius: 30px; }
+  .step-screen { transform: scale(0.59375); }
+  .steps-caption h3 { font-size: 17px; }
+}
+
+/* FAQ */
+.faq-list { max-width: 760px; }
+.faq-item { border-bottom: 1px solid rgba(26,39,68,0.1); }
+.faq-item:first-child { border-top: 1px solid rgba(26,39,68,0.1); }
+.faq-question {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  background: none; border: none; padding: 22px 0; text-align: left; cursor: pointer;
+  font-family: inherit; font-size: 15px; font-weight: 600; color: var(--navy);
+}
+.faq-icon {
+  flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--light-blue);
+  color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 15px;
+  font-weight: 700; transition: transform .25s ease;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.faq-item.open .faq-answer { max-height: 400px; }
+.faq-answer p { font-size: 14px; color: var(--gray); line-height: 1.7; padding: 0 0 22px; max-width: 680px; }
+.faq-cta { margin-top: 36px; }
+
+@media (max-width: 768px) {
+  .faq-question { font-size: 14px; padding: 18px 0; gap: 14px; }
 }
 
 /* CAROUSEL JS additions */
@@ -353,6 +379,7 @@ footer a:hover { color: var(--white); }
     <li><a href="#tidslinje">Sådan virker det</a></li>
     <li><a href="#om-os">Om os</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="faq.html">FAQ</a></li>
     <li><a href="hent-computer.html">Hent til computer</a></li>
   </ul>
   <a href="#kontakt" class="nav-cta">Kontakt os</a>
@@ -432,48 +459,80 @@ footer a:hover { color: var(--white); }
       <h2 class="section-title">Kom godt i gang</h2>
       <p class="section-sub">Det er enkelt at komme i gang. Følg de fem trin herunder og tag kontrollen tilbage.</p>
     </div>
-    <div class="timeline-wrapper reveal">
-      <div class="timeline-track">
-        <div class="timeline-step">
-          <div class="step-number">1</div>
-          <div class="step-content">
-            <h3>Download appen</h3>
-            <p>Hent Mindre på Spil gratis til din smartphone, tilgængelig til både iOS og Android.</p>
-          </div>
-          <div class="step-arrow"></div>
-        </div>
-        <div class="timeline-step">
-          <div class="step-number">2</div>
-          <div class="step-content">
-            <h3>Opret dig med pårørende tilknyttet</h3>
-            <p>Registrer dig med dine oplysninger og tilknyt en pårørende, som får besked, hvis beskyttelsen afsluttes, omgås eller fjernes før tid.</p>
-          </div>
-          <div class="step-arrow"></div>
-        </div>
-        <div class="timeline-step">
-          <div class="step-number">3</div>
-          <div class="step-content">
-            <h3>Vælg din selvudelukkelsesperiode</h3>
-            <p>Beslut selv hvor lang en pause du ønsker, fra 1 måned til 12 måneder. Du har kontrollen.</p>
-          </div>
-          <div class="step-arrow"></div>
-        </div>
-        <div class="timeline-step">
-          <div class="step-number">4</div>
-          <div class="step-content">
-            <h3>Opsæt appen på din telefon</h3>
-            <p>Følg de enkle opsætningsvejledninger i appen, så blokeringen aktiveres korrekt på din enhed.</p>
-          </div>
-          <div class="step-arrow"></div>
-        </div>
-        <div class="timeline-step">
-          <div class="step-number">5</div>
-          <div class="step-content">
-            <h3>Du er beskyttet</h3>
-            <p>Fra nu af kan du ikke tilgå hjemmesider associeret med pengespil på din enhed og du kan fokusere på det, der virkelig betyder noget.</p>
+    <div class="steps-carousel reveal">
+      <div class="steps-carousel-stage">
+        <button type="button" class="steps-arrow" id="stepsPrevBtn" aria-label="Forrige trin">‹</button>
+
+        <div class="steps-phone">
+          <div class="steps-phone-frame">
+            <!-- Trin 1: Download appen -->
+            <iframe class="step-screen active" src="promo/phone-screens/phone-1-velkomst.html" title="Trin 1: Velkomst" scrolling="no" frameborder="0"></iframe>
+
+            <!-- Trin 2: Opret dig med pårørende tilknyttet -->
+            <iframe class="step-screen" src="promo/phone-screens/phone-2-paaroerende.html" title="Trin 2: Tilføj pårørende" scrolling="no" frameborder="0"></iframe>
+
+            <!-- Trin 3: Vælg din selvudelukkelsesperiode -->
+            <iframe class="step-screen" src="promo/phone-screens/phone-3-periodevalg.html" title="Trin 3: Vælg selvudelukkelsesperiode" scrolling="no" frameborder="0"></iframe>
+
+            <!-- Trin 4: Opsæt appen på din telefon -->
+            <iframe class="step-screen" src="promo/phone-screens/phone-4-bekraeftelse.html" title="Trin 4: Bekræftelse" scrolling="no" frameborder="0"></iframe>
+
+            <!-- Trin 5: Du er nu beskyttet -->
+            <iframe class="step-screen" src="promo/phone-screens/phone-5-min-side.html" title="Trin 5: Min side" scrolling="no" frameborder="0"></iframe>
           </div>
         </div>
+
+        <button type="button" class="steps-arrow" id="stepsNextBtn" aria-label="Næste trin">›</button>
       </div>
+
+      <div class="steps-caption">
+        <h3 id="stepsTitle">1. Download appen</h3>
+        <p id="stepsDesc">Tilgængeligt på både iOS og Android.</p>
+      </div>
+
+      <div class="steps-dots">
+        <div class="steps-dot active" data-step="0" aria-label="Trin 1"></div>
+        <div class="steps-dot" data-step="1" aria-label="Trin 2"></div>
+        <div class="steps-dot" data-step="2" aria-label="Trin 3"></div>
+        <div class="steps-dot" data-step="3" aria-label="Trin 4"></div>
+        <div class="steps-dot" data-step="4" aria-label="Trin 5"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq-teaser">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Ofte stillede spørgsmål</div>
+      <h2 class="section-title">Har du spørgsmål?</h2>
+      <p class="section-sub">Her er svar på nogle af de spørgsmål, vi oftest får. Find alle svar på vores FAQ-side.</p>
+    </div>
+    <div class="faq-list reveal" style="margin-top:40px;">
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Hvad sker der, hvis jeg sletter appen?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Hvis du sletter appen eller fjerner blokeringen inden din periode er udløbet, modtager din pårørende automatisk en besked. Blokeringen kan ikke fjernes uden at din pårørende bliver informeret.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Er Mindre på Spil det samme som ROFUS?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Nej. ROFUS er Spillemyndighedens officielle register og dækker kun udbydere med dansk spillicens. Mindre på Spil blokerer derudover for udenlandske udbydere uden dansk licens, som ROFUS ikke dækker. De to løsninger supplerer hinanden.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Kan jeg forkorte min selvudelukkelsesperiode?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Nej. Perioden kan ikke forkortes, når den først er aktiveret. Du kan derimod forlænge eller genstarte den.</p></div>
+      </div>
+    </div>
+    <div class="faq-cta">
+      <a href="faq.html" class="btn-primary">Se alle spørgsmål</a>
     </div>
   </div>
 </section>
@@ -531,7 +590,10 @@ footer a:hover { color: var(--white); }
 
 <footer>
   <span>© 2026 Mindre på Spil. Alle rettigheder forbeholdes.</span>
-  <a href="privatlivspolitik.html">Privatlivspolitik</a>
+  <div style="display:flex;gap:20px;">
+    <a href="faq.html">FAQ</a>
+    <a href="privatlivspolitik.html">Privatlivspolitik</a>
+  </div>
 </footer>
 
 <script>
@@ -612,6 +674,52 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   updateClasses();
   startAuto();
 })();
+
+// STEPS CAROUSEL (Sådan virker det)
+(function() {
+  const screens = document.querySelectorAll('.step-screen');
+  const dots = document.querySelectorAll('.steps-dot');
+  const titleEl = document.getElementById('stepsTitle');
+  const descEl = document.getElementById('stepsDesc');
+  const prevBtn = document.getElementById('stepsPrevBtn');
+  const nextBtn = document.getElementById('stepsNextBtn');
+  if (!screens.length) return;
+
+  const stepsData = [
+    { title: '1. Download appen', desc: 'Tilgængeligt på både iOS og Android.' },
+    { title: '2. Opret dig med pårørende tilknyttet', desc: 'Registrer dig med dine oplysninger og tilknyt en pårørende, som får besked, hvis beskyttelsen afsluttes, omgås eller fjernes før tid.' },
+    { title: '3. Vælg din selvudelukkelsesperiode', desc: 'Beslut selv hvor lang en pause du ønsker, fra 1 måned til 12 måneder. Du har kontrollen.' },
+    { title: '4. Opsæt appen på din telefon', desc: 'Følg de enkle opsætningsvejledninger i appen, så blokeringen aktiveres korrekt på din enhed.' },
+    { title: '5. Du er nu beskyttet...', desc: 'Fra nu af kan du ikke tilgå hjemmesider associeret med pengespil på din enhed og på \'Min side\' kan du finde yderligere hjælp mod ludomani og se dine oplysninger.' }
+  ];
+
+  let stepCurrent = 0;
+
+  function renderStep() {
+    screens.forEach((el, i) => el.classList.toggle('active', i === stepCurrent));
+    dots.forEach((el, i) => el.classList.toggle('active', i === stepCurrent));
+    titleEl.textContent = stepsData[stepCurrent].title;
+    descEl.textContent = stepsData[stepCurrent].desc;
+  }
+
+  function goToStep(i) {
+    stepCurrent = (i + stepsData.length) % stepsData.length;
+    renderStep();
+  }
+
+  prevBtn.addEventListener('click', () => goToStep(stepCurrent - 1));
+  nextBtn.addEventListener('click', () => goToStep(stepCurrent + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goToStep(i)));
+
+  renderStep();
+})();
+
+// FAQ ACCORDION
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.closest('.faq-item').classList.toggle('open');
+  });
+});
 
 </script>
 

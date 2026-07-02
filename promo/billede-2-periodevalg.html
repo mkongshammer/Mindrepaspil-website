@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Mindre på Spil – Periodevalg</title>
+<meta name="viewport" content="width=1290">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary:  #1a2744;
+    --secondary:#4a7cc9;
+    --bgStart:  #dce6f5;
+    --text:     #5a6378;
+    --success:  #1a7a4a;
+    --blueBg:   #EAF2FB;
+    --border:   #c5cad4;
+    --white:    #ffffff;
+    --cardBg:   #F4F6FA;
+  }
+  body {
+    width: 1290px; height: 2796px;
+    background: #fff; overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  .top-bg {
+    position: absolute; top: 0; left: 0; right: 0; height: 680px;
+    background: linear-gradient(180deg, #e8f1fb 0%, #ffffff 100%);
+    z-index: 0;
+  }
+  .deco-circle {
+    position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(74,124,201,0.08) 0%, transparent 65%);
+    bottom: -200px; right: -200px;
+  }
+
+  /* Headline */
+  .headline {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 90px 80px 0; gap: 26px;
+  }
+  .hl-eyebrow { font-size: 26px; font-weight: 700; color: var(--secondary); letter-spacing: 2px; text-transform: uppercase; }
+  .hl-main    { font-size: 80px; font-weight: 800; color: var(--primary); text-align: center; line-height: 1.06; letter-spacing: -2px; max-width: 1050px; }
+  .hl-sub     { font-size: 34px; font-weight: 400; color: var(--text); text-align: center; line-height: 1.45; max-width: 900px; }
+
+  /* Phone */
+  .phone-wrap { position: absolute; top: 480px; left: 245px; z-index: 2; }
+  .phone-frame {
+    width: 800px; height: 1734px;
+    background: #1C1C1E; border-radius: 76px; position: relative;
+    box-shadow:
+      0 50px 100px rgba(0,0,0,0.34), 0 16px 36px rgba(0,0,0,0.16),
+      inset 0 0 0 2px rgba(255,255,255,0.07), inset 0 0 0 6px #252527;
+  }
+  .phone-frame::before {
+    content: ''; position: absolute;
+    right: -9px; top: 380px; width: 8px; height: 140px;
+    background: #2a2a2c; border-radius: 0 5px 5px 0;
+  }
+  .phone-frame::after {
+    content: ''; position: absolute;
+    left: -9px; top: 300px; width: 8px; height: 90px;
+    background: #2a2a2c; border-radius: 5px 0 0 5px;
+    box-shadow: 0 120px 0 #2a2a2c;
+  }
+  .phone-screen {
+    position: absolute; top: 16px; left: 16px; right: 16px; bottom: 16px;
+    background: #fff; border-radius: 62px; overflow: hidden;
+  }
+  .dyn-island {
+    position: absolute; top: 22px; left: 50%; transform: translateX(-50%);
+    width: 170px; height: 52px; background: #1C1C1E; border-radius: 27px; z-index: 100;
+  }
+
+  /* Screen content */
+  .screen-scroll { position: absolute; inset: 0; overflow: hidden; display: flex; flex-direction: column; }
+
+  /* ScreenHeader step=3 */
+  .s-hdr { padding: 88px 32px 14px 48px; }
+  .s-hdr-row { display: flex; align-items: center; }
+  .s-hdr-logo { height: 60px; width: auto; max-width: 264px; object-fit: contain; object-position: left; }
+  .pdots { display: flex; justify-content: center; gap: 12px; padding-top: 8px; }
+  .pdot  { height: 12px; width: 20px; border-radius: 6px; background: var(--border); }
+  .pdot.on { width: 48px; background: var(--primary); }
+
+  /* Screen pad */
+  .screen-pad { padding: 0 48px 64px; overflow: hidden; flex: 1; }
+
+  /* Typography at 2× */
+  .s-title { font-size: 44px; font-weight: 700; color: var(--primary); line-height: 1.2; margin-bottom: 28px; }
+  .s-body  { font-size: 27px; color: var(--text); line-height: 1.65; margin-bottom: 40px; }
+
+  /* Period cards (pcrd) at 2× */
+  /* pcrd: borderRadius 12→24, border 1.5→3, padding 16→32, mb 10→20 */
+  .s-pcrd {
+    width: 100%; border-radius: 24px;
+    border: 3px solid var(--border);
+    background: var(--cardBg);
+    padding: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+  }
+  .s-pcrd.sel {
+    border-color: var(--primary);
+    background: var(--bgStart);
+  }
+  .s-pcrd-txt {
+    font-size: 30px; font-weight: 600;
+    color: var(--text);
+  }
+  .s-pcrd-txt.sel { color: var(--primary); }
+
+  /* Badge: position absolute, top -10→-20, right 14→28 */
+  .s-pcrd-badge {
+    position: absolute; top: -20px; right: 28px;
+    background: var(--primary);
+    border-radius: 999px; padding: 8px 20px;
+  }
+  .s-pcrd-badge-txt { color: white; font-size: 22px; font-weight: 700; }
+
+  /* Buttons */
+  .s-btn-p { width: 100%; height: 104px; background: var(--bgStart); border-radius: 55px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; color: var(--primary); }
+  .s-btn-o { width: 100%; height: 104px; background: var(--white); border-radius: 55px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; color: var(--primary); border: 3px solid var(--primary); }
+
+  .sp12{height:12px} .sp16{height:16px} .sp20{height:20px} .sp24{height:24px}
+  .sp28{height:28px} .sp32{height:32px} .sp40{height:40px} .sp48{height:48px}
+
+  /* Selected period date preview */
+  .period-preview {
+    background: var(--bgStart); border-radius: 20px; padding: 28px 32px;
+    margin-bottom: 40px; text-align: center;
+  }
+  .period-preview-label { font-size: 24px; color: var(--text); margin-bottom: 6px; }
+  .period-preview-date  { font-size: 36px; font-weight: 800; color: var(--primary); }
+
+  /* Feature pills */
+  .features {
+    position: absolute; bottom: 110px; left: 0; right: 0; z-index: 2;
+    display: flex; justify-content: center; gap: 24px;
+  }
+  .fpill {
+    background: var(--bgStart); border-radius: 999px; padding: 18px 40px;
+    font-size: 28px; font-weight: 600; color: var(--primary);
+    display: flex; align-items: center; gap: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bg"></div>
+<div class="deco-circle"></div>
+
+<!-- Headline -->
+<div class="headline">
+  <span class="hl-eyebrow">Periodevalg</span>
+  <h1 class="hl-main">Du bestemmer perioden,<br>ikke impulsen</h1>
+  <p class="hl-sub">Vælg en periode på op til 12 måneder – anbefalet til den bedste og mest holdbare beskyttelse</p>
+</div>
+
+<!-- Phone -->
+<div class="phone-wrap">
+  <div class="phone-frame">
+    <div class="phone-screen">
+      <div class="dyn-island"></div>
+
+      <div class="screen-scroll">
+
+        <!-- ScreenHeader step=3 -->
+        <div class="s-hdr">
+          <div class="s-hdr-row">
+            <img
+              src="../artifacts/mobile/assets/images/logo.png"
+              class="s-hdr-logo"
+              onerror="this.outerHTML='<span style=\'font-size:22px;font-weight:800;color:#1a2744;\'>Mindre på Spil</span>'"
+              alt="Mindre på Spil"
+            >
+          </div>
+          <!-- Step 3 of 4 active -->
+          <div class="pdots">
+            <div class="pdot"></div>
+            <div class="pdot"></div>
+            <div class="pdot on"></div>
+            <div class="pdot"></div>
+          </div>
+        </div>
+
+        <div class="screen-pad">
+
+          <div class="s-title">Midlertidig selvudelukkelse</div>
+
+          <p class="s-body">
+            Du kan selv vælge hvor længe du ønsker at pause dit spil. I denne periode vil du ikke kunne tilgå spiludbydere af pengespil.
+          </p>
+
+          <!-- 1 måned -->
+          <div class="s-pcrd">
+            <div class="s-pcrd-txt">1 måned</div>
+          </div>
+
+          <!-- 3 måneder -->
+          <div class="s-pcrd">
+            <div class="s-pcrd-txt">3 måneder</div>
+          </div>
+
+          <!-- 6 måneder -->
+          <div class="s-pcrd">
+            <div class="s-pcrd-txt">6 måneder</div>
+          </div>
+
+          <!-- 12 måneder — SELECTED with badge -->
+          <div class="s-pcrd sel">
+            <div class="s-pcrd-badge">
+              <span class="s-pcrd-badge-txt">Anbefalet</span>
+            </div>
+            <div class="s-pcrd-txt sel">12 måneder</div>
+          </div>
+
+          <!-- Preview of selected period -->
+          <div class="period-preview">
+            <div class="period-preview-label">Selvudelukkelse frem til</div>
+            <div class="period-preview-date">1. juli 2027</div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="s-btn-p">Fortsæt</div>
+          <div class="sp24"></div>
+          <div class="s-btn-o">Tilbage</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Feature pills -->
+<div class="features">
+  <div class="fpill">📅 1–12 måneder</div>
+  <div class="fpill">🔒 Kan ikke afbrydes</div>
+  <div class="fpill">✓ Anbefalet: 12 mdr.</div>
+</div>
+
+</body>
+</html>

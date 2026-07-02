@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ofte stillede spørgsmål – Mindre på Spil</title>
+<meta name="description" content="Svar på de mest almindelige spørgsmål om Mindre på Spil – selvudelukkelse, pårørende, ROFUS, pris og blokering af gamblingsider.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mindrepaaspil.dk/faq.html">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #1a2744; --blue: #4a7cc9; --light-blue: #dce6f5;
+  --gray: #5a6378; --light-gray: #f4f6fa; --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--navy); background: var(--white); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(26,39,68,0.08);
+  padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px;
+}
+.nav-logo img { height: 100px; width: auto; display: block; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 14px; color: var(--gray); text-decoration: none; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--navy); }
+.nav-cta {
+  background: var(--navy); color: var(--white); border: none; border-radius: 30px;
+  padding: 10px 22px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px;
+  cursor: pointer; text-decoration: none; transition: background .2s;
+}
+.nav-cta:hover { background: var(--blue); }
+
+/* PAGE HERO */
+.faq-hero {
+  min-height: 40vh;
+  background: linear-gradient(160deg, #dce6f5 0%, #eef2f8 50%, #d8e8f0 100%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 130px 40px 60px; text-align: center;
+}
+.faq-hero-inner { max-width: 700px; }
+.section-tag { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+.section-title { font-size: clamp(28px, 4vw, 44px); line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.3px; }
+.section-sub { font-size: 16px; color: var(--gray); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+
+/* SECTION */
+section.faq-body { padding: 80px 40px 100px; background: var(--white); }
+.section-inner { max-width: 800px; margin: 0 auto; }
+
+/* FAQ */
+.faq-list { max-width: 800px; }
+.faq-item { border-bottom: 1px solid rgba(26,39,68,0.1); }
+.faq-item:first-child { border-top: 1px solid rgba(26,39,68,0.1); }
+.faq-question {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  background: none; border: none; padding: 24px 0; text-align: left; cursor: pointer;
+  font-family: inherit; font-size: 16px; font-weight: 600; color: var(--navy);
+}
+.faq-icon {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--light-blue);
+  color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 16px;
+  font-weight: 700; transition: transform .25s ease;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.faq-item.open .faq-answer { max-height: 400px; }
+.faq-answer p { font-size: 15px; color: var(--gray); line-height: 1.75; padding: 0 0 24px; max-width: 720px; }
+
+.faq-contact {
+  margin-top: 48px; padding: 28px 32px; background: var(--light-gray); border-radius: 20px;
+  text-align: center;
+}
+.faq-contact p { font-size: 14px; color: var(--gray); line-height: 1.65; margin-bottom: 16px; }
+.btn-primary {
+  background: var(--navy); color: var(--white); padding: 14px 28px; border-radius: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 15px; text-decoration: none; border: none;
+  cursor: pointer; transition: all .2s; display: inline-block;
+}
+.btn-primary:hover { background: var(--blue); transform: translateY(-1px); }
+
+/* FOOTER */
+footer {
+  background: var(--navy); color: rgba(255,255,255,0.5); padding: 28px 40px;
+  display: flex; align-items: center; justify-content: space-between; font-size: 13px;
+}
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+footer a:hover { color: var(--white); }
+
+/* ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .faq-hero { padding: 100px 20px 40px; }
+  section.faq-body { padding: 56px 20px 72px; }
+  .faq-question { font-size: 14px; padding: 18px 0; gap: 14px; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="MindrePa_Spil_logo_transparent.png" alt="Mindre på Spil"></a>
+  <ul class="nav-links">
+    <li><a href="index.html#om-appen">Om appen</a></li>
+    <li><a href="index.html#tidslinje">Sådan virker det</a></li>
+    <li><a href="index.html#om-os">Om os</a></li>
+    <li><a href="index.html#kontakt">Kontakt</a></li>
+    <li><a href="faq.html" class="active">FAQ</a></li>
+    <li><a href="hent-computer.html">Hent til computer</a></li>
+  </ul>
+  <a href="index.html#kontakt" class="nav-cta">Kontakt os</a>
+</nav>
+
+<section class="faq-hero">
+  <div class="faq-hero-inner">
+    <div class="section-tag">Ofte stillede spørgsmål</div>
+    <h1 class="section-title">Spørgsmål og svar</h1>
+    <p class="section-sub">Find svar på de mest almindelige spørgsmål om Mindre på Spil, selvudelukkelse og pårørende.</p>
+  </div>
+</section>
+
+<section class="faq-body">
+  <div class="section-inner">
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Hvad sker der, hvis jeg sletter appen?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Hvis du sletter appen eller fjerner blokeringen inden din periode er udløbet, modtager din pårørende automatisk en besked. Blokeringen kan ikke fjernes uden at din pårørende bliver informeret.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Er Mindre på Spil det samme som ROFUS?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Nej. ROFUS er Spillemyndighedens officielle register og dækker kun udbydere med dansk spillicens. Mindre på Spil blokerer derudover for udenlandske udbydere uden dansk licens, som ROFUS ikke dækker. De to løsninger supplerer hinanden.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Kan jeg forkorte min selvudelukkelsesperiode?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Nej. Perioden kan ikke forkortes, når den først er aktiveret. Du kan derimod forlænge eller genstarte den.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Kan jeg slette eller opdatere mine pårørende?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Ja. Du kan til enhver tid opdatere eller fjerne en pårørende under "Mine informationer". Du kan dog ikke fjerne den sidste pårørende, mens en selvudelukkelsesperiode er aktiv, da det er en del af appens kernebeskyttelse. Pårørende kan selv framelde sig ved at svare STOP på den SMS de modtager.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Kan man endeligt selvudelukke sig eller automatisk forlænge sin selvudelukkelse?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Du kan til enhver tid vælge at genstarte en ny periode, når din nuværende er udløbet. Der er ikke en automatisk fornyelse, da det skal være et aktivt og bevidst valg hver gang. Du kan dog forlænge din igangværende periode, hvis du ønsker at beskytte dig for en længere periode.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Hvad koster det at bruge appen?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Mindre på Spil er gratis at bruge. Vi ønsker ikke at økonomi skal være en barriere for at søge hjælp til spilproblemer.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Hvem er min pårørende, og hvad sker der, når de tilføjes?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Din pårørende er en person du selv vælger, fx en ven, et familiemedlem eller en partner. De modtager en SMS, når de tilføjes, når din periode slutter, og hvis beskyttelsen fjernes før tid. De kan til enhver tid framelde sig ved at svare STOP.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question">
+          <span>Blokerer appen alle gamblinghjemmesider?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Appen blokerer over 250.000 kendte gambling-domæner og bruger AI til løbende at opdage nye. Ingen løsning er 100% komplet da nye sider opstår dagligt, men vores system opdaterer sig automatisk.</p></div>
+      </div>
+
+    </div>
+
+    <div class="faq-contact reveal visible">
+      <p>Fandt du ikke svar på dit spørgsmål? Vi hører gerne fra dig.</p>
+      <a href="index.html#kontakt" class="btn-primary">Kontakt os</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Mindre på Spil. Alle rettigheder forbeholdes.</span>
+  <div style="display:flex;gap:20px;">
+    <a href="faq.html">FAQ</a>
+    <a href="privatlivspolitik.html">Privatlivspolitik</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.closest('.faq-item').classList.toggle('open');
+  });
+});
+</script>
+
+</body>
+</html>
