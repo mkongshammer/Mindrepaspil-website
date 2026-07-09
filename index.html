@@ -343,6 +343,158 @@ footer a:hover { color: var(--white); }
   .steps-caption h3 { font-size: 17px; }
 }
 
+/* Inlined phone mockup: Trin 1 - Velkomst */
+.s1-phone {
+  --primary: #1a2744; --secondary: #4a7cc9; --bgStart: #dce6f5;
+  --text: #5a6378; --border: #c5cad4; --cardBg: #F4F6FA;
+  width: 320px; height: 693px;
+  background: #1C1C1E; border-radius: 32px; position: relative;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset, 0 0 0 4px #252527 inset;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.s1-phone::before { content: ''; position: absolute; right: -4px; top: 116px; width: 4px; height: 52px; background: #2a2a2c; border-radius: 0 3px 3px 0; }
+.s1-phone::after { content: ''; position: absolute; left: -4px; top: 92px; width: 4px; height: 34px; background: #2a2a2c; border-radius: 3px 0 0 3px; box-shadow: 0 46px 0 #2a2a2c; }
+.s1-screen { position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; background: linear-gradient(180deg, #e8f1fb 0%, #ffffff 80px); border-radius: 26px; overflow: hidden; }
+.s1-di { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 102px; height: 29px; background: #1C1C1E; border-radius: 15px; z-index: 10; }
+.s1-layout { position: absolute; inset: 0; display: flex; flex-direction: column; padding-top: 44px; }
+.s1-logo-section { flex: 3; display: flex; align-items: center; justify-content: center; padding-top: 8px; }
+.s1-logo-section img { height: 320px; width: auto; max-width: 250px; object-fit: contain; }
+.s1-logo-fallback { font-size: 12px; font-weight: 800; color: var(--primary); letter-spacing: -0.3px; }
+.s1-tagline { font-size: 10.5px; color: var(--text); text-align: center; line-height: 1.6; padding: 0 22px 10px; }
+.s1-spacer { flex: 1; }
+.s1-btns { padding: 0 19px 16px; }
+.s1-btn-p { width: 100%; height: 40px; background: var(--primary); border-radius: 23px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; }
+.s1-btn-o { width: 100%; height: 40px; background: transparent; border-radius: 23px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--primary); border: 1.5px solid var(--primary); margin-top: 8px; }
+.s1-footer-url { font-size: 9px; color: var(--border); text-align: center; margin-top: 10px; text-decoration: underline; }
+
+/* Inlined phone mockup: Trin 2 - Tilføj pårørende */
+.s2-phone {
+  --primary: #1a2744; --secondary: #4a7cc9; --bgStart: #dce6f5;
+  --text: #5a6378; --border: #c5cad4; --cardBg: #F4F6FA;
+  width: 320px; height: 693px;
+  background: #1C1C1E; border-radius: 32px; position: relative;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset, 0 0 0 4px #252527 inset;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.s2-phone::before { content: ''; position: absolute; right: -4px; top: 116px; width: 4px; height: 52px; background: #2a2a2c; border-radius: 0 3px 3px 0; }
+.s2-phone::after { content: ''; position: absolute; left: -4px; top: 92px; width: 4px; height: 34px; background: #2a2a2c; border-radius: 3px 0 0 3px; box-shadow: 0 46px 0 #2a2a2c; }
+.s2-screen { position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; background: #fff; border-radius: 26px; overflow: hidden; }
+.s2-di { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 102px; height: 29px; background: #1C1C1E; border-radius: 15px; z-index: 10; }
+.s2-hdr { padding: 44px 19px 8px; position: relative; z-index: 2; }
+.s2-hdr-logo { height: 22px; width: auto; max-width: 100px; object-fit: contain; object-position: left; }
+.s2-logo-fb { font-size: 10px; font-weight: 800; color: var(--primary); }
+.s2-pdots { display: flex; justify-content: center; gap: 4px; margin-top: 5px; }
+.s2-pdot { height: 5px; width: 8px; border-radius: 3px; background: var(--border); }
+.s2-pdot.on { width: 18px; background: var(--primary); }
+.s2-scroll { position: absolute; top: 88px; left: 0; right: 0; bottom: 0; overflow: hidden; padding: 0 19px 14px; }
+.s2-title { font-size: 17px; font-weight: 700; color: var(--primary); line-height: 1.2; margin-bottom: 6px; }
+.s2-body { font-size: 10px; color: var(--text); line-height: 1.65; margin-bottom: 9px; }
+.s2-label { display: block; font-size: 10px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+.s2-card { background: var(--cardBg); border: 1px solid var(--border); border-radius: 9px; padding: 9px 11px; margin-bottom: 6px; }
+.s2-card-name { font-size: 11px; font-weight: 700; color: var(--primary); }
+.s2-card-phone { font-size: 9.5px; color: var(--text); margin-top: 1px; }
+.s2-inp { width: 100%; height: 34px; border: 1.5px solid var(--border); border-radius: 8px; padding: 0 10px; font-size: 10px; color: var(--border); background: white; display: flex; align-items: center; margin-bottom: 9px; }
+.s2-btn-p { width: 100%; height: 38px; background: var(--primary); border-radius: 23px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 7px; }
+.s2-btn-o { width: 100%; height: 38px; background: transparent; border-radius: 23px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--primary); border: 1.5px solid var(--primary); margin-bottom: 7px; }
+.s2-btn-g { width: 100%; height: 38px; background: transparent; border-radius: 23px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: var(--text); }
+
+/* Inlined phone mockup: Trin 3 - Periodevalg */
+.s3-phone {
+  --primary: #1a2744; --secondary: #4a7cc9; --bgStart: #dce6f5;
+  --text: #5a6378; --border: #c5cad4; --cardBg: #F4F6FA;
+  width: 320px; height: 693px;
+  background: #1C1C1E; border-radius: 32px; position: relative;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset, 0 0 0 4px #252527 inset;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.s3-phone::before { content: ''; position: absolute; right: -4px; top: 116px; width: 4px; height: 52px; background: #2a2a2c; border-radius: 0 3px 3px 0; }
+.s3-phone::after { content: ''; position: absolute; left: -4px; top: 92px; width: 4px; height: 34px; background: #2a2a2c; border-radius: 3px 0 0 3px; box-shadow: 0 46px 0 #2a2a2c; }
+.s3-screen { position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; background: #fff; border-radius: 26px; overflow: hidden; }
+.s3-di { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 102px; height: 29px; background: #1C1C1E; border-radius: 15px; z-index: 10; }
+.s3-hdr { padding: 44px 19px 8px; }
+.s3-hdr-logo { height: 22px; width: auto; max-width: 100px; object-fit: contain; object-position: left; }
+.s3-logo-fb { font-size: 10px; font-weight: 800; color: var(--primary); }
+.s3-pdots { display: flex; justify-content: center; gap: 4px; margin-top: 5px; }
+.s3-pdot { height: 5px; width: 8px; border-radius: 3px; background: var(--border); }
+.s3-pdot.on { width: 18px; background: var(--primary); }
+.s3-scroll { position: absolute; top: 88px; left: 0; right: 0; bottom: 0; overflow: hidden; padding: 0 19px 14px; }
+.s3-title { font-size: 15px; font-weight: 700; color: var(--primary); line-height: 1.2; margin-bottom: 5px; }
+.s3-body { font-size: 10px; color: var(--text); line-height: 1.6; margin-bottom: 10px; }
+.s3-pcrd { width: 100%; border-radius: 8px; border: 1.5px solid var(--border); background: var(--cardBg); padding: 9px 12px; text-align: center; margin-bottom: 6px; position: relative; }
+.s3-pcrd.sel { border-color: var(--primary); background: var(--bgStart); }
+.s3-pcrd-txt { font-size: 11.5px; font-weight: 600; color: var(--text); }
+.s3-pcrd-txt.sel { color: var(--primary); }
+.s3-badge { position: absolute; top: -8px; right: 8px; background: var(--primary); border-radius: 999px; padding: 2px 7px; font-size: 8px; font-weight: 700; color: white; }
+.s3-preview { background: var(--bgStart); border-radius: 8px; padding: 9px 12px; text-align: center; margin-bottom: 10px; }
+.s3-preview-lbl { font-size: 9px; color: var(--text); margin-bottom: 2px; }
+.s3-preview-date { font-size: 12px; font-weight: 800; color: var(--primary); }
+.s3-btn-p { width: 100%; height: 38px; background: var(--primary); border-radius: 23px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 7px; }
+.s3-btn-o { width: 100%; height: 38px; background: transparent; border-radius: 23px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--primary); border: 1.5px solid var(--primary); }
+
+/* Inlined phone mockup: Trin 4 - Bekræftelse */
+.s4-phone {
+  --primary: #1a2744; --secondary: #4a7cc9; --bgStart: #dce6f5;
+  --text: #5a6378; --border: #c5cad4; --cardBg: #F4F6FA;
+  --success: #1a7a4a; --successBg: #EDF7ED;
+  width: 320px; height: 693px;
+  background: #1C1C1E; border-radius: 32px; position: relative;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset, 0 0 0 4px #252527 inset;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.s4-phone::before { content: ''; position: absolute; right: -4px; top: 116px; width: 4px; height: 52px; background: #2a2a2c; border-radius: 0 3px 3px 0; }
+.s4-phone::after { content: ''; position: absolute; left: -4px; top: 92px; width: 4px; height: 34px; background: #2a2a2c; border-radius: 3px 0 0 3px; box-shadow: 0 46px 0 #2a2a2c; }
+.s4-screen { position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; background: #fff; border-radius: 26px; overflow: hidden; }
+.s4-di { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 102px; height: 29px; background: #1C1C1E; border-radius: 15px; z-index: 10; }
+.s4-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; padding: 52px 19px 18px; overflow: hidden; }
+.s4-check-circle { width: 62px; height: 62px; border-radius: 31px; background: var(--success); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-bottom: 13px; }
+.s4-check-mark { color: #fff; font-size: 28px; line-height: 1; }
+.s4-title { font-size: 17px; font-weight: 700; color: var(--primary); text-align: center; margin-bottom: 8px; }
+.s4-body { font-size: 10px; color: var(--text); text-align: center; line-height: 1.65; margin-bottom: 11px; max-width: 260px; }
+.s4-date-lbl { font-size: 9px; color: var(--text); text-align: center; margin-bottom: 2px; }
+.s4-date-val { font-size: 13px; font-weight: 800; color: var(--primary); text-align: center; margin-bottom: 11px; }
+.s4-ik { width: 100%; background: var(--cardBg); border-radius: 9px; padding: 10px 12px; border: 1px solid var(--border); margin-bottom: 11px; }
+.s4-ik-over { font-size: 10.5px; font-weight: 700; color: var(--primary); margin-bottom: 3px; }
+.s4-ik-txt { font-size: 9.5px; color: var(--text); line-height: 1.6; }
+.s4-btn-p { width: 100%; height: 40px; background: var(--primary); border-radius: 23px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; }
+
+/* Inlined phone mockup: Trin 5 - Min side */
+.s5-phone {
+  --primary: #1a2744; --secondary: #4a7cc9; --bgStart: #dce6f5;
+  --text: #5a6378; --border: #c5cad4; --cardBg: #F4F6FA;
+  --blueBg: #EAF2FB; --success: #1a7a4a;
+  width: 320px; height: 693px;
+  background: #1C1C1E; border-radius: 32px; position: relative;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset, 0 0 0 4px #252527 inset;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.s5-phone::before { content: ''; position: absolute; right: -4px; top: 116px; width: 4px; height: 52px; background: #2a2a2c; border-radius: 0 3px 3px 0; }
+.s5-phone::after { content: ''; position: absolute; left: -4px; top: 92px; width: 4px; height: 34px; background: #2a2a2c; border-radius: 3px 0 0 3px; box-shadow: 0 46px 0 #2a2a2c; }
+.s5-screen { position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; background: #fff; border-radius: 26px; overflow: hidden; }
+.s5-di { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 102px; height: 29px; background: #1C1C1E; border-radius: 15px; z-index: 10; }
+.s5-scroll { position: absolute; top: 44px; left: 0; right: 0; bottom: 0; overflow: hidden; padding: 8px 17px 14px; }
+.s5-logo-hdr { margin-bottom: 6px; }
+.s5-logo-hdr img { height: 19px; width: auto; max-width: 86px; object-fit: contain; }
+.s5-logo-fb { font-size: 9px; font-weight: 800; color: var(--primary); }
+.s5-min-side-titel { font-size: 15px; font-weight: 700; color: var(--primary); text-align: center; margin-bottom: 3px; }
+.s5-date-lbl { font-size: 8.5px; color: var(--text); text-align: center; }
+.s5-date-val { font-size: 12px; font-weight: 800; color: var(--primary); text-align: center; margin: 2px 0 7px; }
+.s5-shield-block { display: flex; flex-direction: column; align-items: center; margin-bottom: 8px; }
+.s5-shield-circle { width: 32px; height: 32px; border-radius: 16px; background: var(--bgStart); display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 2px; }
+.s5-shield-lbl { font-size: 9px; font-weight: 600; color: var(--primary); }
+.s5-div { border-top: 1px solid var(--border); margin: 7px 0; }
+.s5-sec-title { font-size: 11px; font-weight: 700; color: var(--primary); text-align: center; margin-bottom: 4px; }
+.s5-sec-body { font-size: 8.5px; color: var(--text); text-align: center; line-height: 1.55; margin-bottom: 5px; }
+.s5-card { background: var(--cardBg); border: 1px solid var(--border); border-radius: 7px; padding: 6px 9px; margin-bottom: 5px; }
+.s5-card-name { font-size: 9.5px; font-weight: 700; color: var(--primary); }
+.s5-card-phone { font-size: 8.5px; color: var(--text); margin-top: 1px; }
+.s5-btn-blue { width: 100%; height: 32px; background: var(--blueBg); border-radius: 18px; border: 1.5px solid var(--secondary); display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 600; color: var(--primary); margin-bottom: 5px; }
+.s5-btn-o { width: 100%; height: 32px; background: transparent; border-radius: 18px; border: 1.5px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 700; color: var(--primary); }
+
 /* FAQ */
 .faq-list { max-width: 760px; }
 .faq-item { border-bottom: 1px solid rgba(26,39,68,0.1); }
@@ -466,19 +618,162 @@ footer a:hover { color: var(--white); }
         <div class="steps-phone">
           <div class="steps-phone-frame">
             <!-- Trin 1: Download appen -->
-            <iframe class="step-screen active" src="promo/phone-screens/phone-1-velkomst.html" title="Trin 1: Velkomst" scrolling="no" frameborder="0"></iframe>
+            <div class="step-screen active" aria-label="Trin 1: Velkomst">
+              <div class="s1-phone">
+                <div class="s1-screen">
+                  <div class="s1-di"></div>
+                  <div class="s1-layout">
+                    <div class="s1-logo-section">
+                      <img src="MindrePa_Spil_logo_transparent.png" alt="Mindre på Spil" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                      <span class="s1-logo-fallback" style="display:none;">Mindre på Spil</span>
+                    </div>
+                    <p class="s1-tagline">Det første skridt mod større kontrol over pengespil</p>
+                    <div class="s1-spacer"></div>
+                    <div class="s1-btns">
+                      <div class="s1-btn-p">Opret dig</div>
+                      <div class="s1-btn-o">Log ind</div>
+                      <p class="s1-footer-url">www.mindrepaaspil.dk</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <!-- Trin 2: Opret dig med pårørende tilknyttet -->
-            <iframe class="step-screen" src="promo/phone-screens/phone-2-paaroerende.html" title="Trin 2: Tilføj pårørende" scrolling="no" frameborder="0"></iframe>
+            <div class="step-screen" aria-label="Trin 2: Tilføj pårørende">
+              <div class="s2-phone">
+                <div class="s2-screen">
+                  <div class="s2-di"></div>
+                  <div class="s2-hdr">
+                    <img src="MindrePa_Spil_logo_transparent.png" class="s2-hdr-logo" alt="Mindre på Spil" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="s2-logo-fb" style="display:none;">Mindre på Spil</span>
+                    <div class="s2-pdots">
+                      <div class="s2-pdot"></div>
+                      <div class="s2-pdot on"></div>
+                      <div class="s2-pdot"></div>
+                      <div class="s2-pdot"></div>
+                    </div>
+                  </div>
+                  <div class="s2-scroll">
+                    <div class="s2-title">Tilføj pårørende</div>
+                    <p class="s2-body">Pårørende får besked når du tilføjer dem, når din selvudelukkelse udløber, og hvis appen eller blokeringen fjernes.</p>
+                    <div class="s2-card">
+                      <div class="s2-card-name">Anne Jensen</div>
+                      <div class="s2-card-phone">+45 28 45 67 89</div>
+                    </div>
+                    <div class="s2-card">
+                      <div class="s2-card-name">Lars Nielsen</div>
+                      <div class="s2-card-phone">+45 53 72 88 14</div>
+                    </div>
+                    <span class="s2-label">Tilføj endnu en — navn</span>
+                    <div class="s2-inp">eks. Anna Sørensen</div>
+                    <div class="s2-btn-o">Tilføj pårørende</div>
+                    <div class="s2-btn-p">Fortsæt</div>
+                    <div class="s2-btn-g">Tilbage</div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <!-- Trin 3: Vælg din selvudelukkelsesperiode -->
-            <iframe class="step-screen" src="promo/phone-screens/phone-3-periodevalg.html" title="Trin 3: Vælg selvudelukkelsesperiode" scrolling="no" frameborder="0"></iframe>
+            <div class="step-screen" aria-label="Trin 3: Vælg selvudelukkelsesperiode">
+              <div class="s3-phone">
+                <div class="s3-screen">
+                  <div class="s3-di"></div>
+                  <div class="s3-hdr">
+                    <img src="MindrePa_Spil_logo_transparent.png" class="s3-hdr-logo" alt="Mindre på Spil" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="s3-logo-fb" style="display:none;">Mindre på Spil</span>
+                    <div class="s3-pdots">
+                      <div class="s3-pdot"></div>
+                      <div class="s3-pdot"></div>
+                      <div class="s3-pdot on"></div>
+                      <div class="s3-pdot"></div>
+                    </div>
+                  </div>
+                  <div class="s3-scroll">
+                    <div class="s3-title">Midlertidig selvudelukkelse</div>
+                    <p class="s3-body">Du kan selv vælge hvor længe du ønsker at pause dit spil.</p>
+                    <div class="s3-pcrd"><div class="s3-pcrd-txt">1 måned</div></div>
+                    <div class="s3-pcrd"><div class="s3-pcrd-txt">3 måneder</div></div>
+                    <div class="s3-pcrd"><div class="s3-pcrd-txt">6 måneder</div></div>
+                    <div class="s3-pcrd sel">
+                      <div class="s3-badge">Anbefalet</div>
+                      <div class="s3-pcrd-txt sel">12 måneder</div>
+                    </div>
+                    <div class="s3-preview">
+                      <div class="s3-preview-lbl">Selvudelukkelse frem til</div>
+                      <div class="s3-preview-date">1. juli 2027</div>
+                    </div>
+                    <div class="s3-btn-p">Fortsæt</div>
+                    <div class="s3-btn-o">Tilbage</div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <!-- Trin 4: Opsæt appen på din telefon -->
-            <iframe class="step-screen" src="promo/phone-screens/phone-4-bekraeftelse.html" title="Trin 4: Bekræftelse" scrolling="no" frameborder="0"></iframe>
+            <div class="step-screen" aria-label="Trin 4: Bekræftelse">
+              <div class="s4-phone">
+                <div class="s4-screen">
+                  <div class="s4-di"></div>
+                  <div class="s4-content">
+                    <div class="s4-check-circle"><span class="s4-check-mark">✓</span></div>
+                    <div class="s4-title">Du er registreret!</div>
+                    <p class="s4-body">Du er nu tilmeldt selvudelukkelse. I den kommende periode vil du ikke kunne tilgå spiludbydere for pengespil.</p>
+                    <p class="s4-date-lbl">Din selvudelukkelse udløber d.</p>
+                    <div class="s4-date-val">1. juli 2027</div>
+                    <div class="s4-ik">
+                      <div class="s4-ik-over">Din pårørende holdes opdateret</div>
+                      <div class="s4-ik-txt">Hvis du sletter appen eller fjerner blokeringen før din selvudelukkelsesperiode er overstået, bliver din pårørende notificeret med det samme.</div>
+                    </div>
+                    <div class="s4-btn-p">Gå til Min side</div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <!-- Trin 5: Du er nu beskyttet -->
-            <iframe class="step-screen" src="promo/phone-screens/phone-5-min-side.html" title="Trin 5: Min side" scrolling="no" frameborder="0"></iframe>
+            <div class="step-screen" aria-label="Trin 5: Min side">
+              <div class="s5-phone">
+                <div class="s5-screen">
+                  <div class="s5-di"></div>
+                  <div class="s5-scroll">
+                    <div class="s5-logo-hdr">
+                      <img src="MindrePa_Spil_logo_transparent.png" alt="Mindre på Spil" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                      <span class="s5-logo-fb" style="display:none;">Mindre på Spil</span>
+                    </div>
+                    <div class="s5-min-side-titel">Min side</div>
+                    <p class="s5-date-lbl">Din udelukkelsesperiode varer til:</p>
+                    <div class="s5-date-val">3. januar 2027</div>
+                    <div class="s5-shield-block">
+                      <div class="s5-shield-circle">🛡</div>
+                      <span class="s5-shield-lbl">Blokering aktiv</span>
+                    </div>
+                    <div class="s5-div"></div>
+                    <div class="s5-sec-title">Selvudelukkelse</div>
+                    <p class="s5-sec-body">Du er selvudelukket frem til <strong>3. januar 2027</strong>. Din selvudelukkelse kan ikke afbrydes.</p>
+                    <div class="s5-btn-blue">Tilføj tid til selvudelukkelse</div>
+                    <div class="s5-div"></div>
+                    <div class="s5-sec-title">Dine pårørende</div>
+                    <div class="s5-card">
+                      <div class="s5-card-name">Anne Jensen</div>
+                      <div class="s5-card-phone">+45 28 45 67 89</div>
+                    </div>
+                    <div class="s5-btn-blue">Tilføj pårørende</div>
+                    <div class="s5-div"></div>
+                    <div class="s5-sec-title">Tilknyt din computer</div>
+                    <p class="s5-sec-body">Få samme blokering på din Mac eller Windows-PC.</p>
+                    <div class="s5-btn-blue">Tilknyt computer</div>
+                    <div class="s5-div"></div>
+                    <div class="s5-sec-title">Har du brug for hjælp?</div>
+                    <p class="s5-sec-body">Ønsker du at lære mere om hvordan man bryder et spilmisbrug, så læs mere her:</p>
+                    <div class="s5-btn-blue">Få hjælp her</div>
+                    <div class="s5-div"></div>
+                    <div class="s5-btn-o">Log ud</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
