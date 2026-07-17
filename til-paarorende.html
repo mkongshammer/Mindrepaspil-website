@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Til pårørende – Mindre på Spil</title>
+<meta name="description" content="Information til dig der er pårørende hos Mindre på Spil: hvad det betyder, hvad du skal gøre hvis du får en SMS, og hvor du kan finde støtte.">
+<style>
+  :root{
+    --navy:#1a2744;
+    --blue:#4a7cc9;
+    --bg-start:#dce6f5;
+    --card-bg:#F4F6FA;
+    --text:#5a6378;
+    --success:#1a7a4a;
+    --error:#c0392b;
+    --white:#ffffff;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:var(--white);
+    line-height:1.6;
+  }
+
+  a{color:var(--blue);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  .container{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* Header */
+  header{
+    padding:20px 0;
+    border-bottom:1px solid #e7ebf3;
+  }
+  .header-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+    color:var(--navy);
+    font-size:17px;
+  }
+  .logo img{height:32px;width:auto;}
+  nav{
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  nav a{
+    color:var(--text);
+    font-size:14px;
+    font-weight:500;
+  }
+  nav a.active{color:var(--navy);font-weight:700;}
+  .btn{
+    display:inline-block;
+    padding:11px 24px;
+    border-radius:30px;
+    font-weight:600;
+    font-size:14px;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--navy);
+    color:var(--white) !important;
+  }
+  .btn-primary:hover{background:#243456;text-decoration:none;}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(180deg,var(--bg-start) 0%, var(--white) 100%);
+    padding:56px 0 48px;
+  }
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-size:13px;
+    font-weight:700;
+    color:var(--blue);
+    margin:0 0 12px;
+  }
+  h1{
+    color:var(--navy);
+    font-size:38px;
+    line-height:1.2;
+    margin:0 0 16px;
+  }
+  .hero-intro{
+    font-size:17px;
+    max-width:640px;
+    margin:0;
+  }
+
+  /* Sections */
+  section.content{
+    padding:56px 0;
+  }
+  section.content + section.content{
+    border-top:1px solid #e7ebf3;
+  }
+  h2{
+    color:var(--navy);
+    font-size:26px;
+    margin:0 0 8px;
+  }
+  .section-lead{
+    font-size:16px;
+    max-width:680px;
+    margin:0 0 32px;
+  }
+
+  .card{
+    background:var(--white);
+    border:1px solid #e7ebf3;
+    border-radius:16px;
+    padding:24px 28px;
+    margin-bottom:20px;
+  }
+  .card h3{
+    color:var(--navy);
+    font-size:17px;
+    margin:0 0 10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .card p{margin:0 0 8px;font-size:15px;}
+  .card p:last-child{margin-bottom:0;}
+
+  .icon-badge{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:var(--bg-start);
+    color:var(--navy);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    font-weight:700;
+    flex-shrink:0;
+  }
+
+  .callout{
+    border-left:4px solid var(--blue);
+    background:var(--card-bg);
+    border-radius:10px;
+    padding:20px 24px;
+    margin:24px 0;
+  }
+  .callout h3{
+    color:var(--navy);
+    font-size:16px;
+    margin:0 0 8px;
+  }
+  .callout p{margin:0;font-size:15px;}
+
+  .stop-start{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-top:20px;
+  }
+  .stop-start .pill{
+    flex:1;
+    min-width:220px;
+    border-radius:14px;
+    padding:18px 20px;
+    border:1px solid #e7ebf3;
+    background:var(--white);
+  }
+  .stop-start .pill.stop{border-top:3px solid var(--error);}
+  .stop-start .pill.start{border-top:3px solid var(--success);}
+  .stop-start .pill strong{
+    display:block;
+    color:var(--navy);
+    font-size:15px;
+    margin-bottom:6px;
+  }
+  .stop-start .pill p{margin:0;font-size:14px;}
+
+  .resource-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:16px;
+  }
+  .resource-card{
+    background:var(--white);
+    border:1px solid #e7ebf3;
+    border-radius:14px;
+    padding:20px;
+  }
+  .resource-card strong{
+    display:block;
+    color:var(--navy);
+    font-size:15px;
+    margin-bottom:4px;
+  }
+  .resource-card span{
+    display:block;
+    font-size:13px;
+    margin-bottom:10px;
+  }
+  .resource-card a{font-size:14px;font-weight:600;}
+
+  /* Footer */
+  footer{
+    padding:40px 0;
+    border-top:1px solid #e7ebf3;
+    text-align:center;
+  }
+  footer p{font-size:13px;margin:4px 0;}
+  footer .footer-links{
+    margin-top:8px;
+  }
+  footer .footer-links a{margin:0 10px;font-size:13px;}
+
+  @media (max-width:720px){
+    nav{display:none;}
+    h1{font-size:29px;}
+    .header-row{justify-content:space-between;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-row">
+    <a class="logo" href="index.html">
+      <img src="MindrePa_Spil_logo_transparent.png" alt="Mindre på Spil">
+      Mindre på Spil
+    </a>
+    <nav>
+      <a href="index.html#om-appen">Om appen</a>
+      <a href="index.html#tidslinje">Sådan virker det</a>
+      <a href="index.html#om-os">Om os</a>
+      <a class="active" href="til-paarorende.html">Til pårørende</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="btn btn-primary" href="index.html#kontakt">Kontakt os</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Til pårørende</p>
+    <h1>Du gør allerede en forskel</h1>
+    <p class="hero-intro">Du er blevet valgt som pårørende hos Mindre på Spil, fordi nogen du er tæt på, ønsker dig som en del af deres vej væk fra pengespil. Her kan du læse hvad det betyder, hvad du skal gøre hvis du modtager en besked fra os, og hvor du kan finde mere støtte.</p>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <h2>Hvad betyder det at være pårørende hos Mindre på Spil?</h2>
+    <p class="section-lead">Som pårørende er du en ekstra tryghed for den person der har valgt selvudelukkelse. Du skal ikke overvåge dem, men du får besked i de situationer hvor det giver mening at du ved besked.</p>
+
+    <div class="card">
+      <h3><span class="icon-badge">1</span>Du får en SMS når du bliver tilføjet</h3>
+      <p>Når nogen registrerer dig som pårørende, modtager du en kort SMS der bekræfter det. Du behøver ikke gøre noget, medmindre du ikke ønsker rollen, se STOP-muligheden nedenfor.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon-badge">2</span>Du får besked hvis beskyttelsen forsøges fjernet</h3>
+      <p>Hvis personen sletter appen, fjerner blokeringen, eller på anden måde forsøger at afslutte selvudelukkelsen før den planlagte periode er slut, sender vi dig en SMS med det samme. Det er den vigtigste besked du kan få fra os, og den betyder at det kan være et godt tidspunkt at række ud.</p>
+    </div>
+
+    <div class="callout">
+      <h3>Hvad bør du gøre, hvis du får en sådan besked?</h3>
+      <p>Der findes ikke ét rigtigt svar, men her er vores anbefaling: tag kontakt roligt og uden bebrejdelser, gerne med et opkald frem for en tekstbesked. Spørg ind til hvordan personen har det lige nu, fremfor at fokusere på selve bruddet. Beskeden er ikke en dom, den er et signal om at nogen kan have brug for støtte. Hvis du er i tvivl om hvordan du griber samtalen an, kan Center for Ludomani rådgive både pårørende og spillere.</p>
+    </div>
+
+    <div class="stop-start">
+      <div class="pill stop">
+        <strong>Vil du ikke længere være pårørende?</strong>
+        <p>Svar STOP på en hvilken som helst SMS fra os, så fjerner vi dig med det samme. Du modtager ikke flere beskeder.</p>
+      </div>
+      <div class="pill start">
+        <strong>Fortrudt? Du kan altid vende tilbage</strong>
+        <p>Skriv START til samme nummer, hvis du fortryder eller ombestemmer dig. Du bliver tilføjet som pårørende igen, uden at personen selv skal gøre noget.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <h2>At stå ved siden af nogen med spilproblemer</h2>
+    <p class="section-lead">At være pårørende til en der kæmper med spilafhængighed kan være både tungt og forvirrende. Du er ikke alene om det, og der findes hjælp, både til den der spiller, og til dig.</p>
+
+    <div class="card">
+      <h3>Det er ikke dit ansvar at løse det</h3>
+      <p>Du kan støtte, lytte og være til stede, men du kan ikke tage beslutningen for personen, og du er ikke skyld i deres spilproblemer. Mange pårørende oplever skyldfølelse eller magtesløshed, det er en helt normal reaktion, men det er ikke et ansvar du bærer alene.</p>
+    </div>
+
+    <div class="card">
+      <h3>Pas også på dig selv</h3>
+      <p>Det kan være hårdt at være tæt på en persons spilproblemer, økonomisk, følelsesmæssigt og i relationen. Det er okay at søge egen støtte, og det gør dig bedre i stand til at hjælpe, ikke svagere.</p>
+    </div>
+
+    <h3 style="color:var(--navy); font-size:18px; margin:32px 0 16px;">Hvor kan du finde mere hjælp?</h3>
+    <div class="resource-grid">
+      <div class="resource-card">
+        <strong>Center for Ludomani</strong>
+        <span>Gratis, landsdækkende rådgivning til spillere og pårørende.</span>
+        <a href="https://www.ludomani.dk" target="_blank" rel="noopener">ludomani.dk</a>
+      </div>
+      <div class="resource-card">
+        <strong>StopSpillet</strong>
+        <span>Information og selvhjælpsværktøjer om spilproblemer.</span>
+        <a href="https://www.stopspillet.dk" target="_blank" rel="noopener">stopspillet.dk</a>
+      </div>
+      <div class="resource-card">
+        <strong>Mimersgade Klinik</strong>
+        <span>Behandling og rådgivning for spilafhængighed.</span>
+        <a href="https://www.mwklinik.dk" target="_blank" rel="noopener">mwklinik.dk</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>CVR: 46300718 · Danmark</p>
+    <p>© 2026 Mindre på Spil. Alle rettigheder forbeholdes.</p>
+    <p class="footer-links">
+      <a href="faq.html">FAQ</a>
+      <a href="til-paarorende.html">Til pårørende</a>
+      <a href="privatlivspolitik.html">Privatlivspolitik</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
