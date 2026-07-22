@@ -52,19 +52,6 @@ nav {
 .download-hero h1 em { font-style: normal; color: var(--blue); }
 .download-hero p { font-size: 17px; color: var(--gray); line-height: 1.7; max-width: 520px; margin: 0 auto; }
 
-/* DEV BANNER */
-.dev-banner {
-  width: 100%;
-  background: var(--navy);
-  color: var(--white);
-  text-align: center;
-  padding: 18px 20px;
-}
-
-.btn-download.is-disabled, .btn-download-outline.is-disabled {
-  pointer-events: none;
-  opacity: 0.4;
-}
 
 /* DOWNLOAD CARDS */
 .download-section {
@@ -217,8 +204,6 @@ footer a:hover { color: var(--white); }
   </div>
 </section>
 
-<div class="dev-banner">Computerversionen er fortsat under udvikling, men vil være tilgængelig i nærmeste fremtid.</div>
-
 <!-- DOWNLOAD CARDS -->
 <section class="download-section">
   <div class="download-inner">
@@ -236,7 +221,7 @@ footer a:hover { color: var(--white); }
         </div>
         <h3>Mac</h3>
         <p class="os-sub">Apple Silicon<br>(M1, M2, M3, M4)</p>
-        <a class="btn-download is-disabled">
+        <a href="https://mindrepaaspil-api.onrender.com/api/downloads/mac?arch=arm" class="btn-download">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Hent .dmg
         </a>
@@ -252,7 +237,7 @@ footer a:hover { color: var(--white); }
         </div>
         <h3>Mac</h3>
         <p class="os-sub">Intel<br>(ældre Mac-modeller)</p>
-        <a class="btn-download is-disabled">
+        <a href="https://mindrepaaspil-api.onrender.com/api/downloads/mac?arch=intel" class="btn-download">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Hent .dmg
         </a>
@@ -268,7 +253,7 @@ footer a:hover { color: var(--white); }
         </div>
         <h3>Windows</h3>
         <p class="os-sub">Windows 10 og 11<br>(64-bit)</p>
-        <a class="btn-download is-disabled">
+        <a href="https://mindrepaaspil-api.onrender.com/api/downloads/windows" class="btn-download">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Hent .exe
         </a>
