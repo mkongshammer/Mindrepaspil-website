@@ -9,6 +9,7 @@
   :root{
     --navy:#1a2744;
     --blue:#4a7cc9;
+    --gray:#5a6378;
     --bg-start:#dce6f5;
     --card-bg:#F4F6FA;
     --text:#5a6378;
@@ -36,55 +37,27 @@
     padding:0 24px;
   }
 
-  /* Header */
-  header{
-    padding:20px 0;
-    border-bottom:1px solid #e7ebf3;
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(26,39,68,0.08);
+    padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px;
   }
-  .header-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:24px;
+  .nav-logo img { height: 100px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--gray); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+  .nav-cta {
+    background: var(--navy); color: var(--white); border: none; border-radius: 30px;
+    padding: 10px 22px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px;
+    cursor: pointer; text-decoration: none; transition: background .2s;
   }
-  .logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-weight:700;
-    color:var(--navy);
-    font-size:17px;
-  }
-  .logo img{height:32px;width:auto;}
-  nav{
-    display:flex;
-    gap:24px;
-    flex-wrap:wrap;
-  }
-  nav a{
-    color:var(--text);
-    font-size:14px;
-    font-weight:500;
-  }
-  nav a.active{color:var(--navy);font-weight:700;}
-  .btn{
-    display:inline-block;
-    padding:11px 24px;
-    border-radius:30px;
-    font-weight:600;
-    font-size:14px;
-    white-space:nowrap;
-  }
-  .btn-primary{
-    background:var(--navy);
-    color:var(--white) !important;
-  }
-  .btn-primary:hover{background:#243456;text-decoration:none;}
+  .nav-cta:hover { background: var(--blue); }
 
   /* Hero */
   .hero{
     background:linear-gradient(180deg,var(--bg-start) 0%, var(--white) 100%);
-    padding:56px 0 48px;
+    padding:96px 0 48px;
   }
   .eyebrow{
     text-transform:uppercase;
@@ -230,31 +203,28 @@
   }
   footer .footer-links a{margin:0 10px;font-size:13px;}
 
-  @media (max-width:720px){
-    nav{display:none;}
-    h1{font-size:29px;}
-    .header-row{justify-content:space-between;}
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    h1 { font-size: 29px; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="container header-row">
-    <a class="logo" href="index.html">
-      <img src="MindrePa_Spil_logo_transparent.png" alt="Mindre på Spil">
-      Mindre på Spil
-    </a>
-    <nav>
-      <a href="index.html#om-appen">Om appen</a>
-      <a href="index.html#tidslinje">Sådan virker det</a>
-      <a href="index.html#om-os">Om os</a>
-      <a class="active" href="til-paarorende.html">Til pårørende</a>
-      <a href="faq.html">FAQ</a>
-    </nav>
-    <a class="btn btn-primary" href="index.html#kontakt">Kontakt os</a>
-  </div>
-</header>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="MindrePa_Spil_logo_transparent.png" alt="Mindre på Spil"></a>
+  <ul class="nav-links">
+    <li><a href="index.html#om-appen">Om appen</a></li>
+    <li><a href="index.html#tidslinje">Sådan virker det</a></li>
+    <li><a href="index.html#om-os">Om os</a></li>
+    <li><a href="index.html#kontakt">Kontakt</a></li>
+    <li><a href="til-paarorende.html" class="active">Til pårørende</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="hent-computer.html">Hent til computer</a></li>
+  </ul>
+  <a href="index.html#kontakt" class="nav-cta">Kontakt os</a>
+</nav>
 
 <section class="hero">
   <div class="container">
@@ -270,8 +240,8 @@
     <p class="section-lead">Som pårørende er du en ekstra tryghed for den person der har valgt selvudelukkelse. Du skal ikke overvåge dem, men du får besked i de situationer hvor det giver mening at du ved besked.</p>
 
     <div class="card">
-      <h3><span class="icon-badge">1</span>Du får en SMS når du bliver tilføjet</h3>
-      <p>Når nogen registrerer dig som pårørende, modtager du en kort SMS der bekræfter det. Du behøver ikke gøre noget, medmindre du ikke ønsker rollen, se STOP-muligheden nedenfor.</p>
+      <h3><span class="icon-badge">1</span>Du får en mail når du bliver tilføjet</h3>
+      <p>Når nogen registrerer dig som pårørende, modtager du en mail der bekræfter det. Du behøver ikke gøre noget, medmindre du ikke ønsker rollen, se STOP-muligheden nedenfor.</p>
     </div>
 
     <div class="card">
@@ -287,11 +257,11 @@
     <div class="stop-start">
       <div class="pill stop">
         <strong>Vil du ikke længere være pårørende?</strong>
-        <p>Svar STOP på en hvilken som helst SMS fra os, så fjerner vi dig med det samme. Du modtager ikke flere beskeder.</p>
+        <p>Svar STOP, enten på mailen du modtog ved oprettelse, eller på en SMS-alarm fra os, så fjerner vi dig med det samme. Du modtager herefter ikke flere beskeder.</p>
       </div>
       <div class="pill start">
-        <strong>Fortrudt? Du kan altid vende tilbage</strong>
-        <p>Skriv START til samme nummer, hvis du fortryder eller ombestemmer dig. Du bliver tilføjet som pårørende igen, uden at personen selv skal gøre noget.</p>
+        <strong>Fortrudt? Sådan kommer du tilbage</strong>
+        <p>Svar START til samme mail eller SMS, hvis du fortryder eller ombestemmer dig. Personen skal derefter selv tilføje dig som pårørende igen i appen, det sker ikke automatisk.</p>
       </div>
     </div>
   </div>
