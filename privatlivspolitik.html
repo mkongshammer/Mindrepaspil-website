@@ -85,7 +85,7 @@ footer a:hover { color: var(--white); }
   <a href="index.html" class="back-link">← Tilbage til forsiden</a>
   <div class="policy-tag">Juridisk</div>
   <h1>Privatlivspolitik</h1>
-  <p class="updated">Sidst opdateret: juni 2026</p>
+  <p class="updated">Sidst opdateret: juli 2026</p>
 
   <h2>1. Dataansvarlig</h2>
   <p>Mindre På Spil (CVR 46300718, Danmark) er dataansvarlig for behandlingen af dine personoplysninger. Kontakt: <a href="mailto:kontakt@mindrepaaspil.dk">kontakt@mindrepaaspil.dk</a>.</p>
@@ -94,7 +94,7 @@ footer a:hover { color: var(--white); }
   <p>Når du opretter dig, logger du ind med Apple eller Google. Vi modtager en unik, anonym identifikator fra Apple/Google og dit fulde navn (som du selv indtaster under "Mine informationer") gemmes på vores server, så det kan bruges i beskeder til din pårørende. Vi gemmer desuden: status for din selvudelukkelse (aktiv, slut eller fjernet før tid), den periode du har valgt, batteriniveau og om telefonen lader ved seneste statustjek (kun for at undgå falske alarmer ved fladt batteri), om DNS-blokeringen er aktiv, og dit notifikations-token (så vi kan sende dig beskeder og tjekke om appen stadig er installeret).</p>
 
   <h2>3. Hvilke data vi indsamler om din pårørende</h2>
-  <p>Du indtaster selv din pårørendes navn og telefonnummer, så vi kan kontakte personen, hvis din selvudelukkelse afsluttes som planlagt, eller hvis beskyttelsen fjernes før tid.</p>
+  <p>Du indtaster selv din pårørendes navn, telefonnummer og e-mailadresse (begge kontaktoplysninger er påkrævet), så vi kan kontakte personen, hvis din selvudelukkelse afsluttes som planlagt, eller hvis beskyttelsen fjernes før tid.</p>
 
   <h2>4. DNS-opslag</h2>
   <p>Når din enhed slår et domæne op, tjekker vi det anonymt mod vores liste over kendte spiludbydere. Domæner, der ikke er blokeret, videresendes til Cloudflare (en ekstern DNS-udbyder) for at finde svaret, ligesom din internetudbyder normalt ville gøre. Cloudflare modtager kun selve domænenavnet, aldrig din IP-adresse eller andet, der kan identificere dig, opslaget sker fra vores egen server, ikke fra din enhed. Domæner, vi endnu ikke kender, sendes desuden automatisk til en AI-tjeneste (OpenAI), der vurderer om domænet er en spiludbyder, baseret på domænenavnet og selve sidens indhold, hentet af vores server. Heller ikke her sendes nogen oplysninger, der kan identificere dig som bruger.</p>
@@ -113,7 +113,8 @@ footer a:hover { color: var(--white); }
 
   <h2>9. Hvem behandler data for os</h2>
   <ul>
-    <li>Twilio sender SMS til din pårørende.</li>
+    <li>SendGrid sender e-mails til din pårørende.</li>
+    <li>Twilio sender desuden en SMS, hvis beskyttelsen fjernes før tid, det eneste tilfælde, hvor din pårørende både får en e-mail og en SMS.</li>
     <li>Expo leverer push-notifikationer til din egen telefon.</li>
     <li>Cloudflare besvarer DNS-opslag, der ikke allerede er kendt af os (anonymt).</li>
     <li>OpenAI vurderer ukendte domæner for at afgøre, om de er spiludbydere (kun domænenavn og sideindhold, ingen brugerdata).</li>
@@ -123,7 +124,7 @@ footer a:hover { color: var(--white); }
   <p>Du kan til enhver tid slette din profil under "Mine informationer → Slet profil". Det sker øjeblikkeligt: din pårørende får besked om, at din konto er slettet, og alle dine data (pårørende-kontakt, notifikations-token, beskedhistorik, tilknyttede enheder og din statushistorik) fjernes permanent fra vores server. Du kan også til enhver tid fjerne en bestemt pårørende, dog ikke den sidste imens en selvudelukkelsesperiode er aktiv, da det er en del af appens kernebeskyttelse.</p>
 
   <h2>11. Din pårørendes rettigheder</h2>
-  <p>Din pårørende kan til enhver tid selv framelde sig og få sine data slettet permanent ved at svare "STOP" på den SMS de modtager. Det sker med det samme, uden at du som bruger skal gøre noget.</p>
+  <p>Din pårørende kan til enhver tid selv framelde sig og få sine data slettet permanent, enten ved at svare "STOP" på en SMS eller e-mail de modtager, eller ved at bruge frameldingslinket i bunden af e-mailen. Det sker med det samme, uden at du som bruger skal gøre noget.</p>
 
   <h2>12. Generelle rettigheder</h2>
   <p>Du og din pårørende har som registrerede ret til indsigt, berigtigelse, sletning, begrænsning, indsigelse og dataportabilitet. Kontakt os på <a href="mailto:kontakt@mindrepaaspil.dk">kontakt@mindrepaaspil.dk</a> for at gøre brug af disse rettigheder.</p>
